@@ -5,15 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace NoteApp
-{
+{   
+    /// <summary>
+    /// Класс Note с публичным модификатором доступа.
+    /// </summary>
     public class Note
     {
-        internal string note;
-        internal string title;
-        internal string category_note;
-        internal char text_note;
-        internal DateTime time_of_creation;
-        internal DateTime last_change_time;
+        /// <summary>
+        /// 
+        /// </summary>
+        private string _note;
+        public string _title;
+        public string _category_note;
+        public char _text_note;
+        public readonly DateTime _creation_time;
+        private DateTime _last_change_time;
         
     }
-}
+} 
