@@ -12,13 +12,24 @@ namespace NoteApp
     public class Note
     {
         /// <summary>
-        /// 
+        /// Поле _title "Название" с модификатором доступа public.
         /// </summary>
-        private string _note;
         public string _title;
+        /// <summary>
+        /// Поле _category_note "Категория заметки" с модификатором доступа public.
+        /// </summary>
         public string _category_note;
+        /// <summary>
+        /// Поле _text_note "Текст заметки" с модификатором доступа public.
+        /// </summary>
         public char _text_note;
+        /// <summary>
+        /// Поле _creation_time "Дата создания" с модификатором доступа public.
+        /// </summary>
         public readonly DateTime _creation_time;
+        /// <summary>
+        /// Поле _Last_change_time "Время последнего изменения" с модификатором доступа private.
+        /// </summary>
         private DateTime _last_change_time;
         
     }

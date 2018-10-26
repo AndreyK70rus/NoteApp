@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace NoteApp
 {
-    class ICloneable
+    /// <summary>
+    /// Класс для создания заметок с одинаковым названием.
+    /// </summary>
+    public class ICloneable
     {
     }
 }
