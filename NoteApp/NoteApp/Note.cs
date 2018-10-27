@@ -31,22 +31,20 @@ namespace NoteApp
         /// </summary>
         private DateTime _last_change_time;
 
-        public void record(string newnote, Category_note newcategory_note, char newtext_note, DateTime newcreation_time, DateTime newlast_change_time )
+        public Note(string newnote, Category_note newcategory_note, char newtext_note)
         {
             if (newnote.Length <= 50)
             {
                 _title = newnote;
-                
+                                         
             }
             else
             {
                 throw new ArgumentException("Длина названия превышает 50 символов");
-
             }
             _category_note = newcategory_note;
             _text_note = newtext_note;
-            _creation_time = newcreation_time;
-            _last_change_time = newlast_change_time;
+            _last_change_time = DateTime.Today;
         }
         
     }

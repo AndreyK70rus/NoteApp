@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections;
 
 namespace NoteApp
 {
@@ -11,7 +12,19 @@ namespace NoteApp
     /// </summary>
     public class Project
     {
-        private Note[] Notes = new Note[0];    
+        private ArrayList _Note = new ArrayList();
+        public void AddNote(string newnote, Category_note newcategory_note, char newtext_note)
+        {
+            _Note.Add(new Note(newnote, newcategory_note, newtext_note)); //Добавление заметки.
+        }
+        public void DeleteNote(int index) // Метод удаления заметки.
+        {
+            _Note.RemoveAt(index);
+        }
+        public Note GetNote(int index) //Метод вывода.
+        {
+            return (Note)_Note[index];
+        }
 
-    }
+        }
 }
