@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace NoteApp
-{   
+{
     /// <summary>
     /// Класс Note с публичным модификатором доступа.
     /// </summary>
@@ -14,23 +13,41 @@ namespace NoteApp
         /// <summary>
         /// Поле _title "Название" с модификатором доступа public.
         /// </summary>
-        public string _title;
+        private string _title;
         /// <summary>
         /// Поле _category_note "Категория заметки" с модификатором доступа public.
         /// </summary>
-        public string _category_note;
+        private Category_note _category_note;
         /// <summary>
         /// Поле _text_note "Текст заметки" с модификатором доступа public.
         /// </summary>
-        public char _text_note;
+        private char _text_note;
         /// <summary>
         /// Поле _creation_time "Дата создания" с модификатором доступа public.
         /// </summary>
-        public readonly DateTime _creation_time;
+        private DateTime _creation_time;
         /// <summary>
         /// Поле _Last_change_time "Время последнего изменения" с модификатором доступа private.
         /// </summary>
         private DateTime _last_change_time;
+
+        public void record(string newnote, Category_note newcategory_note, char newtext_note, DateTime newcreation_time, DateTime newlast_change_time )
+        {
+            if (newnote.Length <= 50)
+            {
+                _title = newnote;
+                
+            }
+            else
+            {
+                throw new ArgumentException("Длина названия превышает 50 символов");
+
+            }
+            _category_note = newcategory_note;
+            _text_note = newtext_note;
+            _creation_time = newcreation_time;
+            _last_change_time = newlast_change_time;
+        }
         
     }
 } 

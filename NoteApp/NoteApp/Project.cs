@@ -11,5 +11,7 @@ namespace NoteApp
     /// </summary>
     public class Project
     {
+        private Note[] Notes = new Note[0];    
+
     }
 }

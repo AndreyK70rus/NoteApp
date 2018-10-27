@@ -11,5 +11,6 @@ namespace NoteApp
     /// </summary>
     public class ICloneable
     {
+
     }
 }
