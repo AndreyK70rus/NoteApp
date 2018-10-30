@@ -14,11 +14,13 @@ namespace NoteAppUl
     public partial class Form3 : Form
     {
 
-        Note creation = new Note(DateTime.Today); 
-              
+       
+
         public Form3()
         {
             InitializeComponent();
+            textBox2.Text = DateTime.Today.ToShortDateString();
+            textBox3.Text = DateTime.Today.ToShortDateString();
             comboBox1.Items.Add(Category_note.All);
             comboBox1.Items.Add(Category_note.Work);
             comboBox1.Items.Add(Category_note.House);
@@ -27,6 +29,7 @@ namespace NoteAppUl
             comboBox1.Items.Add(Category_note.Documents);
             comboBox1.Items.Add(Category_note.Finance);
             comboBox1.Items.Add(Category_note.Another);
+           
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -51,7 +54,29 @@ namespace NoteAppUl
 
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
-            Console.WriteLine(creation);
+            
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+           
+          
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            
+            
+        }
+
+        private void form3BindingSource_CurrentChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 

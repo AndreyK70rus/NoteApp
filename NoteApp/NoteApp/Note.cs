@@ -41,16 +41,17 @@ namespace NoteApp
         public void SetTextNote (string value)
         {
             _text_note = value;
-        }       
+        }
+
+     
+
         /// <summary>
         /// Поле _creation_time "Дата создания" с модификатором доступа public.
         /// </summary>
         private readonly DateTime _creation_time;
         public  DateTime GetCreationTime() { return _creation_time; }
-        public void SetCreationTime(DateTime value)
-        {
-
-        }
+        
+       
 
         /// <summary>
         /// Поле _Last_change_time "Время последнего изменения" с модификатором доступа private.
@@ -61,7 +62,10 @@ namespace NoteApp
         {
             _last_change_time = value;
         }
-        
+        public Note(DateTime newcreation_time)
+        {
+            _creation_time = DateTime.Today;
+        }
         public Note(string newnote, Category_note newcategory_note, string newtext_note)
         {
             _category_note = newcategory_note;
@@ -70,9 +74,6 @@ namespace NoteApp
             _title = newnote;
          
         }
-        public Note(DateTime newcreation_time)
-        {
-            _creation_time = newcreation_time;
-        }
+       
     }
 } 
