@@ -55,7 +55,7 @@
             this.toolStripSplitButton3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(772, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(684, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -107,12 +107,14 @@
             this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
             this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addNoteToolStripMenuItem.Text = "Add Note";
+            this.addNoteToolStripMenuItem.Click += new System.EventHandler(this.addNoteToolStripMenuItem_Click);
             // 
             // editNoteToolStripMenuItem
             // 
             this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
             this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.editNoteToolStripMenuItem.Text = "Edit Note";
+            this.editNoteToolStripMenuItem.Click += new System.EventHandler(this.editNoteToolStripMenuItem_Click);
             // 
             // removeNoteToolStripMenuItem
             // 
@@ -129,9 +131,11 @@
             // 
             // listBox1
             // 
+            this.listBox1.Cursor = System.Windows.Forms.Cursors.SizeAll;
             this.listBox1.FormattingEnabled = true;
             this.listBox1.Location = new System.Drawing.Point(0, 52);
             this.listBox1.Name = "listBox1";
+            this.listBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.listBox1.Size = new System.Drawing.Size(229, 342);
             this.listBox1.TabIndex = 4;
             this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
@@ -153,6 +157,7 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(132, 21);
             this.comboBox1.TabIndex = 6;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -167,6 +172,7 @@
             this.button1.Size = new System.Drawing.Size(24, 24);
             this.button1.TabIndex = 7;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
             // 
             // button2
             // 
@@ -202,7 +208,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(772, 438);
+            this.ClientSize = new System.Drawing.Size(684, 437);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -215,6 +221,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
+            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "NoteApp";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

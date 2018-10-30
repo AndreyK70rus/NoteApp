@@ -12,13 +12,14 @@ namespace NoteApp
     /// </summary>
     public enum  Category_note
     {
-      work,
-      house,
-      heath_and_sport,
-      people,
-      documents,
-      finance,
-      another
+      All,
+      Work,
+      House,
+      Heath_and_sport,
+      People,
+      Documents,
+      Finance,
+      Another
     };
    
 }

@@ -19,7 +19,8 @@ namespace NoteAppUl
 
         private void AboutMe_Load(object sender, EventArgs e)
         {
-
+            Hide();
+            
         }
 
         private void label2_Click(object sender, EventArgs e)

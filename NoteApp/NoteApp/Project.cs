@@ -15,7 +15,7 @@ namespace NoteApp
         private ArrayList _Note = new ArrayList();
         public void AddNote(string newnote, Category_note newcategory_note, string newtext_note, DateTime newcreation_time)
         {
-            _Note.Add(new Note(newnote, newcategory_note, newtext_note, newcreation_time )); //Добавление заметки.
+            _Note.Add(new Note(newnote, newcategory_note, newtext_note )); //Добавление заметки.
         }
         public void DeleteNote(int index) // Метод удаления заметки.
         {
@@ -28,7 +28,7 @@ namespace NoteApp
         public void EditNote(int index, string newnote, Category_note newcategory_note, string newtext_note, DateTime newcreation_time)
         {
             _Note.RemoveAt(index);
-            _Note.Add(new Note(newnote, newcategory_note, newtext_note, newcreation_time));
+            _Note.Add(new Note(newnote, newcategory_note, newtext_note));
         }
 
         }
