@@ -13,7 +13,7 @@ namespace NoteApp
     public class Project
     {
         private ArrayList _Note = new ArrayList();
-        public void AddNote(string newnote, Category_note newcategory_note, char newtext_note)
+        public void AddNote(string newnote, Category_note newcategory_note, string newtext_note)
         {
             _Note.Add(new Note(newnote, newcategory_note, newtext_note)); //Добавление заметки.
         }
@@ -24,6 +24,11 @@ namespace NoteApp
         public Note GetNote(int index) //Метод вывода.
         {
             return (Note)_Note[index];
+        }
+        public void ChangeNove(int index, string newnote, Category_note newcategory_note, string newtext_note)
+        {
+            _Note.RemoveAt(index);
+            _Note.Add(new Note(newnote, newcategory_note, newtext_note));
         }
 
         }
