@@ -61,20 +61,13 @@ namespace NoteApp
             _last_change_time = value;
         }
 
-        public Note(string newnote, Category_note newcategory_note, string newtext_note)
+        public Note(string newnote, Category_note newcategory_note, string newtext_note, DateTime newcreation_time, DateTime newlast_change_time)
         {
-            if (newnote.Length <= 50)
-            {
-                _title = newnote;
-                                         
-            }
-            else
-            {
-                throw new ArgumentException("Длина названия превышает 50 символов");
-            }
             _category_note = newcategory_note;
             _text_note = newtext_note;
             _last_change_time = DateTime.Today;
+            _title = newnote;
+            _creation_time = newcreation_time;
         }
         
     }
