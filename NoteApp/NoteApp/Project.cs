@@ -25,7 +25,7 @@ namespace NoteApp
         {
             return (Note)_Note[index];
         }
-        public void ChangeNote(int index, string newnote, Category_note newcategory_note, string newtext_note, DateTime newcreation_time)
+        public void EditNote(int index, string newnote, Category_note newcategory_note, string newtext_note, DateTime newcreation_time)
         {
             _Note.RemoveAt(index);
             _Note.Add(new Note(newnote, newcategory_note, newtext_note, newcreation_time));
