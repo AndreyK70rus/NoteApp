@@ -14,12 +14,12 @@ namespace NoteApp
     /// Класс ProjectManager с модификатором доступа Public. Реализует метод для сохранения объекта «Проект» в файл и 
     /// метод загрузки проекта из файла.
     /// </summary>
-    public class ProjectManager
+    public static class ProjectManager
     {
 
     
         private const string _file_save = @"C:\Users\Андрей Калинин\Documents\NoteApp.notes";
-        public void Save(Project S1) // сериализация
+        public static void Save(Project S1) // сериализация
         {
             JsonSerializer serializer = new JsonSerializer();
             using (StreamWriter sw = new StreamWriter(_file_save))
@@ -27,7 +27,7 @@ namespace NoteApp
         
          serializer.Serialize(writer, S1);
         }
-        public Project Download ()// десериализация
+        public static Project Download ()// десериализация
         {
             Project S1 = null;
             JsonSerializer serializer = new JsonSerializer();
