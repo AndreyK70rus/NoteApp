@@ -8,110 +8,139 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NoteApp;
+using System.IO;
 
 namespace NoteAppUl
 {
     public partial class MainForm : Form
-    { Project Note = new Project { };
+    {
+        public static Project Notes = new Project ();
+         
+
         public MainForm()
         {
 
-            download();
+
             InitializeComponent();
-
-            comboBox1.Items.Add(Category_note.All);
-            comboBox1.Items.Add(Category_note.Work);
-            comboBox1.Items.Add(Category_note.House);
-            comboBox1.Items.Add(Category_note.Heath_and_sport);
-            comboBox1.Items.Add(Category_note.People);
-            comboBox1.Items.Add(Category_note.Documents);
-            comboBox1.Items.Add(Category_note.Finance);
-            comboBox1.Items.Add(Category_note.Another);
-        
-      
+            Notes = ProjectManager.Download();
+            foreach (var note in Notes.NoteList)
+            {
+                NoteListBox.Items.Add(note.Title);
+            }
+           
+           
+            CategoryComboBox.Items.Add(CategoryNote.All);
+            CategoryComboBox.Items.Add(CategoryNote.Work);
+            CategoryComboBox.Items.Add(CategoryNote.House);
+            CategoryComboBox.Items.Add(CategoryNote.Heath_and_sport);
+            CategoryComboBox.Items.Add(CategoryNote.People);
+            CategoryComboBox.Items.Add(CategoryNote.Documents);
+            CategoryComboBox.Items.Add(CategoryNote.Finance);
+            CategoryComboBox.Items.Add(CategoryNote.Another);             
         }
-
-
-
-        void download()
-        {
-            Note = ProjectManager.Download();
-        }
-
-
-       
+  
         AboutMe dlg = new AboutMe();
-        Form3 dlg2 = new Form3();
-        Form3 dlg3 = new Form3();
-        Form3 dlg4 = new Form3();
-        Form3 dlg5 = new Form3();
+        Add_Edit_Note dlg2 = new Add_Edit_Note();
+  
 
-        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            if (!dlg3.Visible)
-                dlg3.Show(this);
-        }
-
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
             
         }
 
-        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (!dlg.Visible)
+              
                 dlg.Show(this);
         }
 
-        private void addNoteToolStripMenuItem_Click(object sender, EventArgs e)
+
+
+        private void AddButton_Click(object sender, EventArgs e)
         {
-            if (!dlg2.Visible)
-                dlg2.Show(this);
+
+            AddNote();
         }
 
-        private void editNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (!dlg3.Visible)
-                dlg3.Show(this);
-        }
+            textBox1.Text = Notes.NoteList[NoteListBox.SelectedIndex].Title;
+            CreatedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].CreationTime;
+            ModifiedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].LastChangeTime;
+            ReadOnlyListView.Text = Notes.NoteList[NoteListBox.SelectedIndex].TextNote;
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if (!dlg4.Visible)
-                dlg4.Show(this);
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-           
 
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void EditButton_Click(object sender, EventArgs e)
+        {
+            EditNote();
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            DeleteNote();
+        }
+        private void AddNote() // Метод добавления заметки.
+        {
+            var sIndex = NoteListBox.SelectedIndex;
+            var addater = new Add_Edit_Note();
+            addater.Note = null;
+            var result = addater.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                var upCont = addater.Note;
+                NoteListBox.Items.Clear();
+                Notes.NoteList.Add(upCont);
+                foreach (var note in Notes.NoteList)
+                {
+                    NoteListBox.Items.Add(note.Title);
+                }
+                ProjectManager.Save(MainForm.Notes);
+            }
+              
+        }
+        private void EditNote() // Метод редактирования заметки.
+        {
+            var sIndex = NoteListBox.SelectedIndex;
+            var inner = new Add_Edit_Note();
+            inner.Note = Notes.NoteList[sIndex];
+            var result = inner.ShowDialog(this);
+            if (result == DialogResult.OK)
+            {
+                var upCont = inner.Note;
+                NoteListBox.Items.Clear();
+                Notes.NoteList.RemoveAt(sIndex);
+                Notes.NoteList.Add(upCont);
+                foreach (var note in Notes.NoteList)
+                {
+                    NoteListBox.Items.Add(note.Title);
+                }
+                ProjectManager.Save(MainForm.Notes);
+            }
+            
+        }
+        private void DeleteNote() //Метод удаления заметки.
+        {
+            var selectedIndex = NoteListBox.SelectedIndex;
+            Notes.NoteList.RemoveAt(selectedIndex);
+            ProjectManager.Save(Notes);
+            NoteListBox.Items.Clear();
+            foreach (var note in Notes.NoteList)
+            {
+                NoteListBox.Items.Add(note.Title);
+            }
+        }
+
+        private void CreatedDateTimePicker_ValueChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void ReadOnlyListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+          
         }
     }
 }

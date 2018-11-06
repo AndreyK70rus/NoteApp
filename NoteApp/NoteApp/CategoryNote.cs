@@ -10,16 +10,16 @@ namespace NoteApp
     /// Перечисление "Категория заметки". В структуру перечисления входят: работа, дом, Здоровье и спорт,
     /// люди, документы, финансы, другое.
     /// </summary>
-    public enum  Category_note
+    public enum  CategoryNote
     {
-      All,
-      Work,
-      House,
-      Heath_and_sport,
-      People,
-      Documents,
-      Finance,
-      Another
+      All,  //Всё
+      Work,  //Работа
+      House,  //Дом            
+      Heath_and_sport,  //Здоровье и спорт  
+      People, //Люди
+      Documents, //Документы
+      Finance,  //Финансы
+      Another  //Другое
     };
    
 }

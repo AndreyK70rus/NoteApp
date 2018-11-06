@@ -11,69 +11,93 @@ namespace NoteApp
     public class Note
     {
         /// <summary>
-        /// Поле _title "Название" с модификатором доступа public.
+        /// Поле _Title "Название" с модификатором доступа public.
         /// </summary>
-        private string _title;
-        public string GetTitle() { return _title; }
-        public void SetTitle (string title)
+        private string _Title;
+        /// <summary>
+        /// Метод геттер и сеттер для поля _Title.
+        /// </summary>
+        /// <returns></returns>
+        public string Title
         {
-            if (title.Length > 50)
+            set
             {
-                throw new ArgumentException("Длина поля превышает 50 символов");
+                if (value.Length > 50)
+                {
+                    throw new ArgumentException("Длина поля превышает 50 символов");
+                }
+                else
+                    _Title = value;
             }
-            else
-                _title = title;
+            get { return _Title; }
         }
         /// <summary>
-        /// Поле _category_note "Категория заметки" с модификатором доступа public.
+        /// Поле _CategoryNote "Категория заметки" с модификатором доступа public.
         /// </summary>
-        private Category_note _category_note;      
-        public Category_note GetCategoryNote() { return _category_note; }
-        public void SetCategoryNote (Category_note value)
+        private CategoryNote _CategoryNote;
+        /// <summary>
+        /// Метод геттер и сеттер для поля _CategoryNote.
+        /// </summary>
+        public CategoryNote CategoryNote
         {
-            _category_note = value;
+            set
+            {
+                _CategoryNote = CategoryNote;
+            }
+            get { return CategoryNote; }
         }
-        /// <summary>
-        /// Поле _text_note "Текст заметки" с модификатором доступа public.
-        /// </summary>
-        private string _text_note;
-        public string GetTextNote() { return _text_note; }
-        public void SetTextNote (string value)
-        {
-            _text_note = value;
-        }
-
-     
-
-        /// <summary>
-        /// Поле _creation_time "Дата создания" с модификатором доступа public.
-        /// </summary>
-        private readonly DateTime _creation_time;
-        public  DateTime GetCreationTime() { return _creation_time; }
         
-       
-
         /// <summary>
-        /// Поле _Last_change_time "Время последнего изменения" с модификатором доступа private.
+        /// Поле _TextNote "Текст заметки" с модификатором доступа public.
         /// </summary>
-        private DateTime _last_change_time;
-        public DateTime GetLastChangeTime() { return _last_change_time; }
-        public void SetLastChangeTime (DateTime value)
+        private string _TextNote;
+        /// <summary>
+        /// Метод геттер и сеттер для поля _TextNote
+        /// </summary>
+        public string TextNote
         {
-            _last_change_time = value;
-        }
-        public Note(DateTime newcreation_time)
+            set
+            {
+                _TextNote = TextNote;
+            }
+            get { return _TextNote; }
+        }     
+        /// <summary>
+        /// Поле _CreationTime "Дата создания" с модификатором доступа public. Только для чтения.
+        /// </summary>
+        private  DateTime _CreationTime;
+        /// <summary>
+        /// Метод геттер для поля _CreationTime.
+        /// </summary>
+        /// <returns></returns>
+        public DateTime CreationTime
         {
-            _creation_time = DateTime.Today;
+            set
+            {
+                CreationTime = DateTime.Today;
+                _CreationTime = CreationTime;
+            }
+            get { return _CreationTime; }
         }
-        public Note(string newnote, Category_note newcategory_note, string newtext_note)
+        /// <summary>
+        /// Поле _LastChangeTime "Время последнего изменения" с модификатором доступа private.
+        /// </summary>
+        private DateTime _LastChangeTime;
+        /// <summary>
+        /// Метод геттер для поля _LastChangeTime.
+        /// </summary>
+        /// <returns></returns>
+        public DateTime LastChangeTime
         {
-            _category_note = newcategory_note;
-            _text_note = newtext_note;
-            _last_change_time = DateTime.Today;
-            _title = newnote;
-         
+            set
+            {
+                LastChangeTime = DateTime.Today;
+                _LastChangeTime = LastChangeTime;
+            }
+            get { return _LastChangeTime; }
         }
+
+   
        
     }
 } 

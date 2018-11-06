@@ -11,72 +11,126 @@ using NoteApp;
 
 namespace NoteAppUl
 {
-    public partial class Form3 : Form
+    public partial class Add_Edit_Note : Form
     {
-
        
-
-        public Form3()
+        Project _Save = new Project();
+        public Note Cont;
+        public Note Note
         {
+            get  { return Cont; }
+            set
+            {
+                Cont = value;
+                if (Cont != null)
+                {
+                    TitleTextBox.Text = Cont.Title;
+                    
+                    dateTimePicker1.Value = Cont.CreationTime;
+                    dateTimePicker2.Value = Cont.LastChangeTime;
+                    Add_EditTextBox.Text = Cont.TextNote;
+                }
+                else
+                {
+                    TitleTextBox.Text = "";
+                    CategoryComboBox.Text = "";
+                    dateTimePicker1.Value = DateTime.Today;
+                    dateTimePicker2.Value = DateTime.Today;
+                    Add_EditTextBox.Text = "";
+                }
+            }
+            }
+        public Add_Edit_Note()
+        {
+
+            
+            
+
             InitializeComponent();
-            textBox2.Text = DateTime.Today.ToShortDateString();
-            textBox3.Text = DateTime.Today.ToShortDateString();
-            comboBox1.Items.Add(Category_note.All);
-            comboBox1.Items.Add(Category_note.Work);
-            comboBox1.Items.Add(Category_note.House);
-            comboBox1.Items.Add(Category_note.Heath_and_sport);
-            comboBox1.Items.Add(Category_note.People);
-            comboBox1.Items.Add(Category_note.Documents);
-            comboBox1.Items.Add(Category_note.Finance);
-            comboBox1.Items.Add(Category_note.Another);
+            dateTimePicker1.Text = DateTime.Today.ToShortDateString();
+            dateTimePicker2.Text = DateTime.Today.ToShortDateString();
+            CategoryComboBox.Items.Add(CategoryNote.All);
+            CategoryComboBox.Items.Add(CategoryNote.Work);
+            CategoryComboBox.Items.Add(CategoryNote.House);
+            CategoryComboBox.Items.Add(CategoryNote.Heath_and_sport);
+            CategoryComboBox.Items.Add(CategoryNote.People);
+            CategoryComboBox.Items.Add(CategoryNote.Documents);
+            CategoryComboBox.Items.Add(CategoryNote.Finance);
+            CategoryComboBox.Items.Add(CategoryNote.Another);
            
         }
+      
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
            
         }
 
-        private void dateTimePicker1_ValueChanged_1(object sender, EventArgs e)
+        private void DateTimePicker1_ValueChanged_1(object sender, EventArgs e)
         {
             
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void Button2_Click(object sender, EventArgs e)
         {
             Hide();          
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
             
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
+        private void TextBox2_TextChanged(object sender, EventArgs e)
         {
            
           
         }
 
-        private void textBox3_TextChanged(object sender, EventArgs e)
+        private void TextBox3_TextChanged(object sender, EventArgs e)
         {
             
             
         }
 
-        private void form3BindingSource_CurrentChanged(object sender, EventArgs e)
+        private void Form3BindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
-           
+            string Text = TitleTextBox.Text;
+            if (Text.Length > 50 )
+            {
+                MessageBox.Show("Длина поля превышает 50 символов","Название заметки",
+                    MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning);
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            ProjectManager.Save(_Save);
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+       
+
+        private void Add_EditTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string text = Add_EditTextBox.Text;           
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 

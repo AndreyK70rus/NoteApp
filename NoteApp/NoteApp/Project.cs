@@ -12,24 +12,11 @@ namespace NoteApp
     /// </summary>
     public class Project
     {
-        private ArrayList _Note = new ArrayList();
-        public void AddNote(string newnote, Category_note newcategory_note, string newtext_note, DateTime newcreation_time)
-        {
-            _Note.Add(new Note(newnote, newcategory_note, newtext_note )); //Добавление заметки.
-        }
-        public void DeleteNote(int index) // Метод удаления заметки.
-        {
-            _Note.RemoveAt(index);
-        }
-        public Note GetNote(int index) //Метод вывода.
-        {
-            return (Note)_Note[index];
-        }
-        public void EditNote(int index, string newnote, Category_note newcategory_note, string newtext_note, DateTime newcreation_time)
-        {
-            _Note.RemoveAt(index);
-            _Note.Add(new Note(newnote, newcategory_note, newtext_note));
-        }
+        
+        public List<Note> NoteList = new List<Note>();
+        
+        
 
-        }
+
+    }
 }

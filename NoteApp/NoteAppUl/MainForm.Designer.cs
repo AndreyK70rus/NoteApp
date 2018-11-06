@@ -28,197 +28,348 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSplitButton2 = new System.Windows.Forms.ToolStripSplitButton();
-            this.addNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.editNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSplitButton3 = new System.Windows.Forms.ToolStripSplitButton();
-            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.FileToolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.ExitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditToolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.AddNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.EditNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.RemoveNoteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.AboutToolStripSplitButton = new System.Windows.Forms.ToolStripSplitButton();
+            this.AboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.NoteListBox = new System.Windows.Forms.ListBox();
+            this.ShowCategoryLabel = new System.Windows.Forms.Label();
+            this.CategoryComboBox = new System.Windows.Forms.ComboBox();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.EditButton = new System.Windows.Forms.Button();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.Category = new System.Windows.Forms.Label();
+            this.Created1 = new System.Windows.Forms.Label();
+            this.Modified = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CreatedDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.CategoryTextBox = new System.Windows.Forms.TextBox();
+            this.ReadOnlyListView = new System.Windows.Forms.ListView();
+            this.splitter1 = new System.Windows.Forms.Splitter();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
             // 
+            this.toolStrip1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripSplitButton1,
-            this.toolStripSplitButton2,
-            this.toolStripSplitButton3});
+            this.FileToolStripSplitButton,
+            this.EditToolStripSplitButton,
+            this.AboutToolStripSplitButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(684, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(144, 25);
             this.toolStrip1.TabIndex = 3;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // toolStripSplitButton1
+            // FileToolStripSplitButton
             // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exitToolStripMenuItem});
-            this.toolStripSplitButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton1.Image")));
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(41, 22);
-            this.toolStripSplitButton1.Text = "File";
-            this.toolStripSplitButton1.ButtonClick += new System.EventHandler(this.toolStripSplitButton1_ButtonClick);
+            this.FileToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.FileToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ExitToolStripMenuItem});
+            this.FileToolStripSplitButton.Image = ((System.Drawing.Image)(resources.GetObject("FileToolStripSplitButton.Image")));
+            this.FileToolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FileToolStripSplitButton.Name = "FileToolStripSplitButton";
+            this.FileToolStripSplitButton.Size = new System.Drawing.Size(41, 22);
+            this.FileToolStripSplitButton.Text = "File";
             // 
-            // exitToolStripMenuItem
+            // ExitToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem";
+            this.ExitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
+            this.ExitToolStripMenuItem.Text = "Exit";
+            this.ExitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
-            // toolStripSplitButton2
+            // EditToolStripSplitButton
             // 
-            this.toolStripSplitButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSplitButton2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addNoteToolStripMenuItem,
-            this.editNoteToolStripMenuItem,
-            this.removeNoteToolStripMenuItem});
-            this.toolStripSplitButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton2.Image")));
-            this.toolStripSplitButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton2.Name = "toolStripSplitButton2";
-            this.toolStripSplitButton2.Size = new System.Drawing.Size(43, 22);
-            this.toolStripSplitButton2.Text = "Edit";
+            this.EditToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.EditToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AddNoteToolStripMenuItem,
+            this.EditNoteToolStripMenuItem,
+            this.RemoveNoteToolStripMenuItem});
+            this.EditToolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.EditToolStripSplitButton.Name = "EditToolStripSplitButton";
+            this.EditToolStripSplitButton.Size = new System.Drawing.Size(43, 22);
+            this.EditToolStripSplitButton.Text = "Edit";
             // 
-            // addNoteToolStripMenuItem
+            // AddNoteToolStripMenuItem
             // 
-            this.addNoteToolStripMenuItem.Name = "addNoteToolStripMenuItem";
-            this.addNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.addNoteToolStripMenuItem.Text = "Add Note";
-            this.addNoteToolStripMenuItem.Click += new System.EventHandler(this.addNoteToolStripMenuItem_Click);
+            this.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem";
+            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.AddNoteToolStripMenuItem.Text = "Add Note";
             // 
-            // editNoteToolStripMenuItem
+            // EditNoteToolStripMenuItem
             // 
-            this.editNoteToolStripMenuItem.Name = "editNoteToolStripMenuItem";
-            this.editNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.editNoteToolStripMenuItem.Text = "Edit Note";
-            this.editNoteToolStripMenuItem.Click += new System.EventHandler(this.editNoteToolStripMenuItem_Click);
+            this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.EditNoteToolStripMenuItem.Text = "Edit Note";
             // 
-            // removeNoteToolStripMenuItem
+            // RemoveNoteToolStripMenuItem
             // 
-            this.removeNoteToolStripMenuItem.Name = "removeNoteToolStripMenuItem";
-            this.removeNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.removeNoteToolStripMenuItem.Text = "Remove Note";
+            this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.RemoveNoteToolStripMenuItem.Text = "Remove Note";
             // 
-            // toolStripSplitButton3
+            // AboutToolStripSplitButton
             // 
-            this.toolStripSplitButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripSplitButton3.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.aboutToolStripMenuItem});
-            this.toolStripSplitButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripSplitButton3.Image")));
-            this.toolStripSplitButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton3.Name = "toolStripSplitButton3";
-            this.toolStripSplitButton3.Size = new System.Drawing.Size(48, 22);
-            this.toolStripSplitButton3.Text = "Help";
+            this.AboutToolStripSplitButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.AboutToolStripSplitButton.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AboutToolStripMenuItem});
+            this.AboutToolStripSplitButton.Image = ((System.Drawing.Image)(resources.GetObject("AboutToolStripSplitButton.Image")));
+            this.AboutToolStripSplitButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.AboutToolStripSplitButton.Name = "AboutToolStripSplitButton";
+            this.AboutToolStripSplitButton.Size = new System.Drawing.Size(48, 22);
+            this.AboutToolStripSplitButton.Text = "Help";
             // 
-            // aboutToolStripMenuItem
+            // AboutToolStripMenuItem
             // 
-            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.aboutToolStripMenuItem.Text = "About";
-            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
+            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.AboutToolStripMenuItem.Text = "About";
+            this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
-            // listBox1
+            // NoteListBox
             // 
-            this.listBox1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(0, 52);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.listBox1.Size = new System.Drawing.Size(229, 342);
-            this.listBox1.TabIndex = 4;
-            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            this.NoteListBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.NoteListBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.NoteListBox.FormattingEnabled = true;
+            this.NoteListBox.Location = new System.Drawing.Point(0, 52);
+            this.NoteListBox.Name = "NoteListBox";
+            this.NoteListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.NoteListBox.Size = new System.Drawing.Size(232, 342);
+            this.NoteListBox.TabIndex = 4;
+            this.NoteListBox.SelectedIndexChanged += new System.EventHandler(this.NoteListBox_SelectedIndexChanged);
             // 
-            // label1
+            // ShowCategoryLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-3, 25);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Show Category";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.ShowCategoryLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowCategoryLabel.AutoSize = true;
+            this.ShowCategoryLabel.Location = new System.Drawing.Point(0, 25);
+            this.ShowCategoryLabel.Name = "ShowCategoryLabel";
+            this.ShowCategoryLabel.Size = new System.Drawing.Size(82, 13);
+            this.ShowCategoryLabel.TabIndex = 5;
+            this.ShowCategoryLabel.Text = "Show Category:";
             // 
-            // comboBox1
+            // CategoryComboBox
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(97, 25);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(132, 21);
-            this.comboBox1.TabIndex = 6;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.CategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryComboBox.FormattingEnabled = true;
+            this.CategoryComboBox.Location = new System.Drawing.Point(83, 23);
+            this.CategoryComboBox.Name = "CategoryComboBox";
+            this.CategoryComboBox.Size = new System.Drawing.Size(149, 21);
+            this.CategoryComboBox.TabIndex = 6;
             // 
-            // button1
+            // AddButton
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
-            this.button1.Location = new System.Drawing.Point(0, 411);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 24);
-            this.button1.TabIndex = 7;
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.AddButton.BackColor = System.Drawing.Color.White;
+            this.AddButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddButton.BackgroundImage")));
+            this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.AddButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
+            this.AddButton.Location = new System.Drawing.Point(0, 415);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(23, 21);
+            this.AddButton.TabIndex = 7;
+            this.AddButton.UseVisualStyleBackColor = false;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
-            // button2
+            // EditButton
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
-            this.button2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button2.BackgroundImage")));
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
-            this.button2.Location = new System.Drawing.Point(31, 411);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(25, 25);
-            this.button2.TabIndex = 8;
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.EditButton.BackColor = System.Drawing.Color.White;
+            this.EditButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditButton.BackgroundImage")));
+            this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.EditButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
+            this.EditButton.Location = new System.Drawing.Point(26, 415);
+            this.EditButton.Name = "EditButton";
+            this.EditButton.Size = new System.Drawing.Size(23, 21);
+            this.EditButton.TabIndex = 8;
+            this.EditButton.UseVisualStyleBackColor = false;
+            this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
             // 
-            // button3
+            // DeleteButton
             // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button3.BackgroundImage")));
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
-            this.button3.Location = new System.Drawing.Point(62, 411);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(25, 25);
-            this.button3.TabIndex = 9;
-            this.button3.UseVisualStyleBackColor = false;
+            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DeleteButton.BackColor = System.Drawing.Color.White;
+            this.DeleteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteButton.BackgroundImage")));
+            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Default;
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
+            this.DeleteButton.Location = new System.Drawing.Point(52, 415);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(23, 21);
+            this.DeleteButton.TabIndex = 9;
+            this.DeleteButton.UseVisualStyleBackColor = false;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // Category
+            // 
+            this.Category.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Category.AutoSize = true;
+            this.Category.Location = new System.Drawing.Point(248, 52);
+            this.Category.Name = "Category";
+            this.Category.Size = new System.Drawing.Size(52, 13);
+            this.Category.TabIndex = 10;
+            this.Category.Text = "Category:";
+            // 
+            // Created1
+            // 
+            this.Created1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Created1.AutoSize = true;
+            this.Created1.Location = new System.Drawing.Point(248, 82);
+            this.Created1.Name = "Created1";
+            this.Created1.Size = new System.Drawing.Size(47, 13);
+            this.Created1.TabIndex = 11;
+            this.Created1.Text = "Created:";
+            // 
+            // Modified
+            // 
+            this.Modified.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.Modified.AutoSize = true;
+            this.Modified.Location = new System.Drawing.Point(445, 82);
+            this.Modified.Name = "Modified";
+            this.Modified.Size = new System.Drawing.Size(50, 13);
+            this.Modified.TabIndex = 12;
+            this.Modified.Text = "Modified:";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // CreatedDateTimePicker
+            // 
+            this.CreatedDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CreatedDateTimePicker.Location = new System.Drawing.Point(297, 79);
+            this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
+            this.CreatedDateTimePicker.Size = new System.Drawing.Size(142, 20);
+            this.CreatedDateTimePicker.TabIndex = 14;
+            this.CreatedDateTimePicker.ValueChanged += new System.EventHandler(this.CreatedDateTimePicker_ValueChanged);
+            // 
+            // ModifiedDateTimePicker
+            // 
+            this.ModifiedDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ModifiedDateTimePicker.Location = new System.Drawing.Point(498, 79);
+            this.ModifiedDateTimePicker.Name = "ModifiedDateTimePicker";
+            this.ModifiedDateTimePicker.Size = new System.Drawing.Size(142, 20);
+            this.ModifiedDateTimePicker.TabIndex = 15;
+            // 
+            // contextMenuStrip2
+            // 
+            this.contextMenuStrip2.Name = "contextMenuStrip2";
+            this.contextMenuStrip2.Size = new System.Drawing.Size(61, 4);
+            // 
+            // CategoryTextBox
+            // 
+            this.CategoryTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryTextBox.BackColor = System.Drawing.SystemColors.Control;
+            this.CategoryTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CategoryTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.CategoryTextBox.Location = new System.Drawing.Point(306, 52);
+            this.CategoryTextBox.Name = "CategoryTextBox";
+            this.CategoryTextBox.ReadOnly = true;
+            this.CategoryTextBox.Size = new System.Drawing.Size(103, 13);
+            this.CategoryTextBox.TabIndex = 18;
+            // 
+            // ReadOnlyListView
+            // 
+            this.ReadOnlyListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ReadOnlyListView.BackColor = System.Drawing.SystemColors.Control;
+            this.ReadOnlyListView.Location = new System.Drawing.Point(251, 105);
+            this.ReadOnlyListView.Name = "ReadOnlyListView";
+            this.ReadOnlyListView.Size = new System.Drawing.Size(436, 332);
+            this.ReadOnlyListView.TabIndex = 19;
+            this.ReadOnlyListView.UseCompatibleStateImageBehavior = false;
+            this.ReadOnlyListView.SelectedIndexChanged += new System.EventHandler(this.ReadOnlyListView_SelectedIndexChanged);
+            // 
+            // splitter1
+            // 
+            this.splitter1.Location = new System.Drawing.Point(0, 0);
+            this.splitter1.Name = "splitter1";
+            this.splitter1.Size = new System.Drawing.Size(3, 438);
+            this.splitter1.TabIndex = 20;
+            this.splitter1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.textBox1.Location = new System.Drawing.Point(251, 18);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(386, 22);
+            this.textBox1.TabIndex = 21;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(684, 437);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox1);
+            this.ClientSize = new System.Drawing.Size(687, 438);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.splitter1);
+            this.Controls.Add(this.ReadOnlyListView);
+            this.Controls.Add(this.CategoryTextBox);
+            this.Controls.Add(this.ModifiedDateTimePicker);
+            this.Controls.Add(this.CreatedDateTimePicker);
+            this.Controls.Add(this.Modified);
+            this.Controls.Add(this.Created1);
+            this.Controls.Add(this.Category);
+            this.Controls.Add(this.DeleteButton);
+            this.Controls.Add(this.EditButton);
+            this.Controls.Add(this.AddButton);
+            this.Controls.Add(this.CategoryComboBox);
+            this.Controls.Add(this.ShowCategoryLabel);
+            this.Controls.Add(this.NoteListBox);
             this.Controls.Add(this.toolStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -232,19 +383,30 @@
 
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton2;
-        private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton3;
-        private System.Windows.Forms.ToolStripMenuItem addNoteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem editNoteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeNoteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ToolStripSplitButton FileToolStripSplitButton;
+        private System.Windows.Forms.ToolStripMenuItem ExitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSplitButton EditToolStripSplitButton;
+        private System.Windows.Forms.ToolStripSplitButton AboutToolStripSplitButton;
+        private System.Windows.Forms.ToolStripMenuItem AddNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem EditNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem RemoveNoteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem AboutToolStripMenuItem;
+        private System.Windows.Forms.ListBox NoteListBox;
+        private System.Windows.Forms.Label ShowCategoryLabel;
+        private System.Windows.Forms.ComboBox CategoryComboBox;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button EditButton;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.Label Category;
+        private System.Windows.Forms.Label Created1;
+        private System.Windows.Forms.Label Modified;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.DateTimePicker CreatedDateTimePicker;
+        private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
+        private System.Windows.Forms.TextBox CategoryTextBox;
+        private System.Windows.Forms.ListView ReadOnlyListView;
+        private System.Windows.Forms.Splitter splitter1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
