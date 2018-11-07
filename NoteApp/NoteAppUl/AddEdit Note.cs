@@ -11,10 +11,8 @@ using NoteApp;
 
 namespace NoteAppUl
 {
-    public partial class Add_Edit_Note : Form
-    {
-       
-        Project _Save = new Project();
+    public partial class NoteForm : Form
+    {       
         public Note Cont;
         public Note Note
         {
@@ -25,7 +23,7 @@ namespace NoteAppUl
                 if (Cont != null)
                 {
                     TitleTextBox.Text = Cont.Title;
-                    
+                    CategoryComboBox.SelectedItem = Cont.CategoryNote;
                     dateTimePicker1.Value = Cont.CreationTime;
                     dateTimePicker2.Value = Cont.LastChangeTime;
                     Add_EditTextBox.Text = Cont.TextNote;
@@ -40,13 +38,11 @@ namespace NoteAppUl
                 }
             }
             }
-        public Add_Edit_Note()
+        public NoteForm()
         {
-
-            
-            
-
             InitializeComponent();
+            dateTimePicker1.Enabled = false;
+            this.dateTimePicker2.Enabled = false;
             dateTimePicker1.Text = DateTime.Today.ToShortDateString();
             dateTimePicker2.Text = DateTime.Today.ToShortDateString();
             CategoryComboBox.Items.Add(CategoryNote.All);
@@ -56,54 +52,14 @@ namespace NoteAppUl
             CategoryComboBox.Items.Add(CategoryNote.People);
             CategoryComboBox.Items.Add(CategoryNote.Documents);
             CategoryComboBox.Items.Add(CategoryNote.Finance);
-            CategoryComboBox.Items.Add(CategoryNote.Another);
-           
+            CategoryComboBox.Items.Add(CategoryNote.Another);         
         }
-      
-
-        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-           
-        }
-
-        private void DateTimePicker1_ValueChanged_1(object sender, EventArgs e)
-        {
-            
-        }
-
         private void Button2_Click(object sender, EventArgs e)
         {
-            Hide();          
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
-
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DateTimePicker2_ValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void TextBox2_TextChanged(object sender, EventArgs e)
-        {
-           
-          
-        }
-
-        private void TextBox3_TextChanged(object sender, EventArgs e)
-        {
-            
-            
-        }
-
-        private void Form3BindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void TextBox1_TextChanged(object sender, EventArgs e)
+   private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             string Text = TitleTextBox.Text;
             if (Text.Length > 50 )
@@ -116,7 +72,7 @@ namespace NoteAppUl
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            ProjectManager.Save(_Save);
+            
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -128,9 +84,14 @@ namespace NoteAppUl
             string text = Add_EditTextBox.Text;           
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void Button1_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 

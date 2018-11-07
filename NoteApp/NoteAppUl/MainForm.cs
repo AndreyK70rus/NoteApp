@@ -40,7 +40,7 @@ namespace NoteAppUl
         }
   
         AboutMe dlg = new AboutMe();
-        Add_Edit_Note dlg2 = new Add_Edit_Note();
+        NoteForm dlg2 = new NoteForm();
   
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -48,50 +48,36 @@ namespace NoteAppUl
             Application.Exit();
             
         }
-
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
               
-                dlg.Show(this);
+                dlg.ShowDialog(this);
         }
-
-
-
         private void AddButton_Click(object sender, EventArgs e)
         {
-
             AddNote();
         }
-
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox1.Text = Notes.NoteList[NoteListBox.SelectedIndex].Title;
+            NoteListBox.SelectedItem = Notes.NoteList[NoteListBox.SelectedIndex].CategoryNote;
             CreatedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].CreationTime;
             ModifiedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].LastChangeTime;
             ReadOnlyListView.Text = Notes.NoteList[NoteListBox.SelectedIndex].TextNote;
-
-
         }
-
         private void EditButton_Click(object sender, EventArgs e)
         {
             EditNote();
         }
-
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            DeleteNote();
-        }
         private void AddNote() // Метод добавления заметки.
         {
             var sIndex = NoteListBox.SelectedIndex;
-            var addater = new Add_Edit_Note();
+            var addater = new NoteForm();
             addater.Note = null;
             var result = addater.ShowDialog(this);
             if (result == DialogResult.OK)
             {
                 var upCont = addater.Note;
-                NoteListBox.Items.Clear();
                 Notes.NoteList.Add(upCont);
                 foreach (var note in Notes.NoteList)
                 {
@@ -104,7 +90,7 @@ namespace NoteAppUl
         private void EditNote() // Метод редактирования заметки.
         {
             var sIndex = NoteListBox.SelectedIndex;
-            var inner = new Add_Edit_Note();
+            var inner = new NoteForm();
             inner.Note = Notes.NoteList[sIndex];
             var result = inner.ShowDialog(this);
             if (result == DialogResult.OK)
@@ -133,14 +119,9 @@ namespace NoteAppUl
             }
         }
 
-        private void CreatedDateTimePicker_ValueChanged(object sender, EventArgs e)
+        private void DeleteButton_Click_1(object sender, EventArgs e)
         {
-            
-        }
-
-        private void ReadOnlyListView_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        }
+            DeleteNote();
+        }   
     }
 }

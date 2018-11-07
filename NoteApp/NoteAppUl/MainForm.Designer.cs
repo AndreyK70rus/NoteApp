@@ -44,7 +44,6 @@
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.AddButton = new System.Windows.Forms.Button();
             this.EditButton = new System.Windows.Forms.Button();
-            this.DeleteButton = new System.Windows.Forms.Button();
             this.Category = new System.Windows.Forms.Label();
             this.Created1 = new System.Windows.Forms.Label();
             this.Modified = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.ReadOnlyListView = new System.Windows.Forms.ListView();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.DeleteButton = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -169,27 +169,24 @@
             // 
             // CategoryComboBox
             // 
-            this.CategoryComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.CategoryComboBox.FormattingEnabled = true;
-            this.CategoryComboBox.Location = new System.Drawing.Point(83, 23);
+            this.CategoryComboBox.Location = new System.Drawing.Point(88, 23);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(149, 21);
-            this.CategoryComboBox.TabIndex = 6;
+            this.CategoryComboBox.Size = new System.Drawing.Size(121, 21);
+            this.CategoryComboBox.TabIndex = 23;
             // 
             // AddButton
             // 
             this.AddButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddButton.BackColor = System.Drawing.Color.White;
+            this.AddButton.BackColor = System.Drawing.SystemColors.Control;
             this.AddButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("AddButton.BackgroundImage")));
             this.AddButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.AddButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AddButton.FlatAppearance.BorderSize = 0;
+            this.AddButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
-            this.AddButton.Location = new System.Drawing.Point(0, 415);
+            this.AddButton.Location = new System.Drawing.Point(3, 415);
             this.AddButton.Name = "AddButton";
             this.AddButton.Size = new System.Drawing.Size(23, 21);
             this.AddButton.TabIndex = 7;
@@ -201,36 +198,19 @@
             this.EditButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.EditButton.BackColor = System.Drawing.Color.White;
+            this.EditButton.BackColor = System.Drawing.SystemColors.Control;
             this.EditButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("EditButton.BackgroundImage")));
             this.EditButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.EditButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.EditButton.FlatAppearance.BorderSize = 0;
+            this.EditButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.EditButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
-            this.EditButton.Location = new System.Drawing.Point(26, 415);
+            this.EditButton.Location = new System.Drawing.Point(32, 415);
             this.EditButton.Name = "EditButton";
             this.EditButton.Size = new System.Drawing.Size(23, 21);
             this.EditButton.TabIndex = 8;
             this.EditButton.UseVisualStyleBackColor = false;
             this.EditButton.Click += new System.EventHandler(this.EditButton_Click);
-            // 
-            // DeleteButton
-            // 
-            this.DeleteButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DeleteButton.BackColor = System.Drawing.Color.White;
-            this.DeleteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteButton.BackgroundImage")));
-            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.DeleteButton.Cursor = System.Windows.Forms.Cursors.Default;
-            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
-            this.DeleteButton.Location = new System.Drawing.Point(52, 415);
-            this.DeleteButton.Name = "DeleteButton";
-            this.DeleteButton.Size = new System.Drawing.Size(23, 21);
-            this.DeleteButton.TabIndex = 9;
-            this.DeleteButton.UseVisualStyleBackColor = false;
-            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
             // Category
             // 
@@ -282,7 +262,6 @@
             this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
             this.CreatedDateTimePicker.Size = new System.Drawing.Size(142, 20);
             this.CreatedDateTimePicker.TabIndex = 14;
-            this.CreatedDateTimePicker.ValueChanged += new System.EventHandler(this.CreatedDateTimePicker_ValueChanged);
             // 
             // ModifiedDateTimePicker
             // 
@@ -324,7 +303,6 @@
             this.ReadOnlyListView.Size = new System.Drawing.Size(436, 332);
             this.ReadOnlyListView.TabIndex = 19;
             this.ReadOnlyListView.UseCompatibleStateImageBehavior = false;
-            this.ReadOnlyListView.SelectedIndexChanged += new System.EventHandler(this.ReadOnlyListView_SelectedIndexChanged);
             // 
             // splitter1
             // 
@@ -345,12 +323,27 @@
             this.textBox1.Size = new System.Drawing.Size(386, 22);
             this.textBox1.TabIndex = 21;
             // 
+            // DeleteButton
+            // 
+            this.DeleteButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("DeleteButton.BackgroundImage")));
+            this.DeleteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.DeleteButton.FlatAppearance.BorderSize = 0;
+            this.DeleteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.DeleteButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 2F);
+            this.DeleteButton.Location = new System.Drawing.Point(60, 415);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(23, 21);
+            this.DeleteButton.TabIndex = 22;
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click_1);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(687, 438);
+            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.splitter1);
             this.Controls.Add(this.ReadOnlyListView);
@@ -360,7 +353,6 @@
             this.Controls.Add(this.Modified);
             this.Controls.Add(this.Created1);
             this.Controls.Add(this.Category);
-            this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.EditButton);
             this.Controls.Add(this.AddButton);
             this.Controls.Add(this.CategoryComboBox);
@@ -396,7 +388,6 @@
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.Button AddButton;
         private System.Windows.Forms.Button EditButton;
-        private System.Windows.Forms.Button DeleteButton;
         private System.Windows.Forms.Label Category;
         private System.Windows.Forms.Label Created1;
         private System.Windows.Forms.Label Modified;
@@ -408,5 +399,6 @@
         private System.Windows.Forms.ListView ReadOnlyListView;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button DeleteButton;
     }
 }
