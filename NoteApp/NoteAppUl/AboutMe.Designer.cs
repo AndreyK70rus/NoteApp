@@ -65,7 +65,7 @@
             this.label2.Size = new System.Drawing.Size(59, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "v. 1.0.0";
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
+          
             // 
             // label3
             // 
@@ -119,7 +119,7 @@
             this.label6.Size = new System.Drawing.Size(149, 17);
             this.label6.TabIndex = 5;
             this.label6.Text = "2018 Andrey Kalinin ©";
-            this.label6.Click += new System.EventHandler(this.Label6_Click);
+       
             // 
             // linkLabel1
             // 
@@ -134,7 +134,7 @@
             this.linkLabel1.TabIndex = 8;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "https://github.com/AndreyK70rus/NoteApp";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
+            
             // 
             // linkLabel2
             // 
@@ -166,7 +166,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AboutMe";
             this.Text = "About";
-            this.Load += new System.EventHandler(this.AboutMe_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

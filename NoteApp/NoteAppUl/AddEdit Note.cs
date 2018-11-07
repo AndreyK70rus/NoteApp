@@ -42,7 +42,7 @@ namespace NoteAppUl
         {
             InitializeComponent();
             dateTimePicker1.Enabled = false;
-            this.dateTimePicker2.Enabled = false;
+            dateTimePicker2.Enabled = false;
             dateTimePicker1.Text = DateTime.Today.ToShortDateString();
             dateTimePicker2.Text = DateTime.Today.ToShortDateString();
             CategoryComboBox.Items.Add(CategoryNote.All);
@@ -69,29 +69,15 @@ namespace NoteAppUl
                 MessageBoxIcon.Warning);
             }
         }
-
         private void Button1_Click(object sender, EventArgs e)
         {
-            
+            Cont = new Note();
             DialogResult = DialogResult.OK;
             Close();
         }
-
-       
-
-        private void Add_EditTextBox_TextChanged(object sender, EventArgs e)
-        {
-            string text = Add_EditTextBox.Text;           
-        }
-
         private void Button1_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 

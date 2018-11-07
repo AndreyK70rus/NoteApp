@@ -14,21 +14,15 @@ namespace NoteAppUl
 {
     public partial class MainForm : Form
     {
-        public static Project Notes = new Project ();
-         
-
+        public static Project Notes = new Project ();        
         public MainForm()
         {
-
-
             InitializeComponent();
             Notes = ProjectManager.Download();
             foreach (var note in Notes.NoteList)
             {
                 NoteListBox.Items.Add(note.Title);
-            }
-           
-           
+            }          
             CategoryComboBox.Items.Add(CategoryNote.All);
             CategoryComboBox.Items.Add(CategoryNote.Work);
             CategoryComboBox.Items.Add(CategoryNote.House);
@@ -38,19 +32,14 @@ namespace NoteAppUl
             CategoryComboBox.Items.Add(CategoryNote.Finance);
             CategoryComboBox.Items.Add(CategoryNote.Another);             
         }
-  
         AboutMe dlg = new AboutMe();
         NoteForm dlg2 = new NoteForm();
-  
-
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-            
+            Application.Exit();           
         }
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-              
+        {             
                 dlg.ShowDialog(this);
         }
         private void AddButton_Click(object sender, EventArgs e)
@@ -76,7 +65,7 @@ namespace NoteAppUl
             addater.Note = null;
             var result = addater.ShowDialog(this);
             if (result == DialogResult.OK)
-            {
+            {              
                 var upCont = addater.Note;
                 Notes.NoteList.Add(upCont);
                 foreach (var note in Notes.NoteList)
@@ -84,8 +73,7 @@ namespace NoteAppUl
                     NoteListBox.Items.Add(note.Title);
                 }
                 ProjectManager.Save(MainForm.Notes);
-            }
-              
+            }            
         }
         private void EditNote() // Метод редактирования заметки.
         {
@@ -118,7 +106,6 @@ namespace NoteAppUl
                 NoteListBox.Items.Add(note.Title);
             }
         }
-
         private void DeleteButton_Click_1(object sender, EventArgs e)
         {
             DeleteNote();

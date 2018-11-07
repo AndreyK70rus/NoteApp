@@ -16,26 +16,5 @@ namespace NoteAppUl
         {
             InitializeComponent();
         }
-
-        private void AboutMe_Load(object sender, EventArgs e)
-        {
-            Hide();
-            
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
-        private void Label6_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

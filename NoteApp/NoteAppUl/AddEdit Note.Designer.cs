@@ -88,7 +88,7 @@
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(121, 21);
             this.CategoryComboBox.TabIndex = 14;
-            this.CategoryComboBox.SelectedIndexChanged += new System.EventHandler(this.CategoryComboBox_SelectedIndexChanged);
+            
             // 
             // TitleTextBox
             // 
@@ -116,7 +116,7 @@
             this.Add_EditTextBox.Size = new System.Drawing.Size(650, 291);
             this.Add_EditTextBox.TabIndex = 10;
             this.Add_EditTextBox.Text = "";
-            this.Add_EditTextBox.TextChanged += new System.EventHandler(this.Add_EditTextBox_TextChanged);
+           
             // 
             // dateTimePicker1
             // 
