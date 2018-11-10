@@ -52,10 +52,10 @@
             this.ModifiedDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.CategoryTextBox = new System.Windows.Forms.TextBox();
-            this.ReadOnlyListView = new System.Windows.Forms.ListView();
             this.splitter1 = new System.Windows.Forms.Splitter();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.DeleteButton = new System.Windows.Forms.Button();
+            this.RichTextBox = new System.Windows.Forms.RichTextBox();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -108,20 +108,23 @@
             // AddNoteToolStripMenuItem
             // 
             this.AddNoteToolStripMenuItem.Name = "AddNoteToolStripMenuItem";
-            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.AddNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AddNoteToolStripMenuItem.Text = "Add Note";
+            this.AddNoteToolStripMenuItem.Click += new System.EventHandler(this.AddNoteToolStripMenuItem_Click);
             // 
             // EditNoteToolStripMenuItem
             // 
             this.EditNoteToolStripMenuItem.Name = "EditNoteToolStripMenuItem";
-            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.EditNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.EditNoteToolStripMenuItem.Text = "Edit Note";
+            this.EditNoteToolStripMenuItem.Click += new System.EventHandler(this.EditNoteToolStripMenuItem_Click);
             // 
             // RemoveNoteToolStripMenuItem
             // 
             this.RemoveNoteToolStripMenuItem.Name = "RemoveNoteToolStripMenuItem";
-            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.RemoveNoteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.RemoveNoteToolStripMenuItem.Text = "Remove Note";
+            this.RemoveNoteToolStripMenuItem.Click += new System.EventHandler(this.RemoveNoteToolStripMenuItem_Click);
             // 
             // AboutToolStripSplitButton
             // 
@@ -137,7 +140,7 @@
             // AboutToolStripMenuItem
             // 
             this.AboutToolStripMenuItem.Name = "AboutToolStripMenuItem";
-            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.AboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.AboutToolStripMenuItem.Text = "About";
             this.AboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
@@ -287,24 +290,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryTextBox.BackColor = System.Drawing.SystemColors.Control;
             this.CategoryTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.CategoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.CategoryTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.CategoryTextBox.Location = new System.Drawing.Point(306, 52);
             this.CategoryTextBox.Name = "CategoryTextBox";
             this.CategoryTextBox.ReadOnly = true;
             this.CategoryTextBox.Size = new System.Drawing.Size(103, 13);
             this.CategoryTextBox.TabIndex = 18;
-            // 
-            // ReadOnlyListView
-            // 
-            this.ReadOnlyListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ReadOnlyListView.BackColor = System.Drawing.SystemColors.Control;
-            this.ReadOnlyListView.Location = new System.Drawing.Point(251, 105);
-            this.ReadOnlyListView.Name = "ReadOnlyListView";
-            this.ReadOnlyListView.Size = new System.Drawing.Size(436, 332);
-            this.ReadOnlyListView.TabIndex = 19;
-            this.ReadOnlyListView.UseCompatibleStateImageBehavior = false;
             // 
             // splitter1
             // 
@@ -318,11 +310,11 @@
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.textBox1.Location = new System.Drawing.Point(251, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(386, 22);
+            this.textBox1.Size = new System.Drawing.Size(386, 25);
             this.textBox1.TabIndex = 21;
             // 
             // DeleteButton
@@ -339,16 +331,26 @@
             this.DeleteButton.UseVisualStyleBackColor = true;
             this.DeleteButton.Click += new System.EventHandler(this.DeleteButton_Click_1);
             // 
+            // RichTextBox
+            // 
+            this.RichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.RichTextBox.Location = new System.Drawing.Point(251, 105);
+            this.RichTextBox.Name = "RichTextBox";
+            this.RichTextBox.ReadOnly = true;
+            this.RichTextBox.Size = new System.Drawing.Size(434, 331);
+            this.RichTextBox.TabIndex = 24;
+            this.RichTextBox.Text = "";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(687, 438);
+            this.Controls.Add(this.RichTextBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.splitter1);
-            this.Controls.Add(this.ReadOnlyListView);
             this.Controls.Add(this.CategoryTextBox);
             this.Controls.Add(this.ModifiedDateTimePicker);
             this.Controls.Add(this.CreatedDateTimePicker);
@@ -398,9 +400,9 @@
         private System.Windows.Forms.DateTimePicker ModifiedDateTimePicker;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip2;
         private System.Windows.Forms.TextBox CategoryTextBox;
-        private System.Windows.Forms.ListView ReadOnlyListView;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.RichTextBox RichTextBox;
     }
 }

@@ -36,10 +36,10 @@
             this.CategoryComboBox = new System.Windows.Forms.ComboBox();
             this.TitleTextBox = new System.Windows.Forms.TextBox();
             this.SaveButton = new System.Windows.Forms.Button();
-            this.Add_EditTextBox = new System.Windows.Forms.RichTextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.CloseButton = new System.Windows.Forms.Button();
+            this.Button = new System.Windows.Forms.Button();
+            this.NoteTextBox = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // TitleLabel
@@ -88,7 +88,6 @@
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(121, 21);
             this.CategoryComboBox.TabIndex = 14;
-            
             // 
             // TitleTextBox
             // 
@@ -109,15 +108,6 @@
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // Add_EditTextBox
-            // 
-            this.Add_EditTextBox.Location = new System.Drawing.Point(15, 92);
-            this.Add_EditTextBox.Name = "Add_EditTextBox";
-            this.Add_EditTextBox.Size = new System.Drawing.Size(650, 291);
-            this.Add_EditTextBox.TabIndex = 10;
-            this.Add_EditTextBox.Text = "";
-           
-            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(78, 66);
@@ -132,25 +122,33 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker2.TabIndex = 12;
             // 
-            // CloseButton
+            // Button
             // 
-            this.CloseButton.Location = new System.Drawing.Point(597, 389);
-            this.CloseButton.Name = "CloseButton";
-            this.CloseButton.Size = new System.Drawing.Size(75, 23);
-            this.CloseButton.TabIndex = 13;
-            this.CloseButton.Text = "Cancel";
-            this.CloseButton.UseVisualStyleBackColor = true;
-            this.CloseButton.Click += new System.EventHandler(this.Button1_Click);
+            this.Button.Location = new System.Drawing.Point(597, 389);
+            this.Button.Name = "Button";
+            this.Button.Size = new System.Drawing.Size(75, 23);
+            this.Button.TabIndex = 15;
+            this.Button.Text = "Cancel";
+            this.Button.UseVisualStyleBackColor = true;
+            this.Button.Click += new System.EventHandler(this.Button_Click);
+            // 
+            // NoteTextBox
+            // 
+            this.NoteTextBox.Location = new System.Drawing.Point(15, 92);
+            this.NoteTextBox.Name = "NoteTextBox";
+            this.NoteTextBox.Size = new System.Drawing.Size(657, 291);
+            this.NoteTextBox.TabIndex = 16;
+            this.NoteTextBox.Text = "";
             // 
             // NoteForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(684, 437);
-            this.Controls.Add(this.CloseButton);
+            this.Controls.Add(this.NoteTextBox);
+            this.Controls.Add(this.Button);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.Add_EditTextBox);
             this.Controls.Add(this.SaveButton);
             this.Controls.Add(this.TitleTextBox);
             this.Controls.Add(this.CategoryComboBox);
@@ -175,9 +173,9 @@
         private System.Windows.Forms.ComboBox CategoryComboBox;
         private System.Windows.Forms.TextBox TitleTextBox;
         private System.Windows.Forms.Button SaveButton;        
-        private System.Windows.Forms.RichTextBox Add_EditTextBox;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.Button CloseButton;
+        private System.Windows.Forms.Button Button;
+        private System.Windows.Forms.RichTextBox NoteTextBox;
     }
 }

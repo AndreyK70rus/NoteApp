@@ -12,8 +12,8 @@ using NoteApp;
 namespace NoteAppUl
 {
     public partial class NoteForm : Form
-    {       
-        public Note Cont;
+    {    
+        public Note Cont;    
         public Note Note
         {
             get  { return Cont; }
@@ -26,7 +26,7 @@ namespace NoteAppUl
                     CategoryComboBox.SelectedItem = Cont.CategoryNote;
                     dateTimePicker1.Value = Cont.CreationTime;
                     dateTimePicker2.Value = Cont.LastChangeTime;
-                    Add_EditTextBox.Text = Cont.TextNote;
+                    NoteTextBox.Text = Cont.TextNote;
                 }
                 else
                 {
@@ -34,17 +34,17 @@ namespace NoteAppUl
                     CategoryComboBox.Text = "";
                     dateTimePicker1.Value = DateTime.Today;
                     dateTimePicker2.Value = DateTime.Today;
-                    Add_EditTextBox.Text = "";
+                    NoteTextBox.Text = "";
                 }
             }
             }
+
         public NoteForm()
         {
+
             InitializeComponent();
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
-            dateTimePicker1.Text = DateTime.Today.ToShortDateString();
-            dateTimePicker2.Text = DateTime.Today.ToShortDateString();
             CategoryComboBox.Items.Add(CategoryNote.All);
             CategoryComboBox.Items.Add(CategoryNote.Work);
             CategoryComboBox.Items.Add(CategoryNote.House);
@@ -72,12 +72,18 @@ namespace NoteAppUl
         private void Button1_Click(object sender, EventArgs e)
         {
             Cont = new Note();
+            Cont.Title = TitleTextBox.Text;
+            Cont.CategoryNote = (CategoryNote)CategoryComboBox.SelectedItem;
+            Cont.CreationTime = dateTimePicker1.Value;
+            Cont.LastChangeTime = DateTime.Now;
+            Cont.TextNote = NoteTextBox.Text;
             DialogResult = DialogResult.OK;
             Close();
         }
-        private void Button1_Click_1(object sender, EventArgs e)
+        private void Button_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult = DialogResult.Cancel;
+            Close();
         }
     }
 

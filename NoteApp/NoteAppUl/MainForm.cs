@@ -14,7 +14,7 @@ namespace NoteAppUl
 {
     public partial class MainForm : Form
     {
-        public static Project Notes = new Project ();        
+        public static Project Notes = new Project();
         public MainForm()
         {
             InitializeComponent();
@@ -22,7 +22,7 @@ namespace NoteAppUl
             foreach (var note in Notes.NoteList)
             {
                 NoteListBox.Items.Add(note.Title);
-            }          
+            }
             CategoryComboBox.Items.Add(CategoryNote.All);
             CategoryComboBox.Items.Add(CategoryNote.Work);
             CategoryComboBox.Items.Add(CategoryNote.House);
@@ -40,7 +40,7 @@ namespace NoteAppUl
         }
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {             
-                dlg.ShowDialog(this);
+            dlg.ShowDialog(this);
         }
         private void AddButton_Click(object sender, EventArgs e)
         {
@@ -48,11 +48,12 @@ namespace NoteAppUl
         }
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+
             textBox1.Text = Notes.NoteList[NoteListBox.SelectedIndex].Title;
-            NoteListBox.SelectedItem = Notes.NoteList[NoteListBox.SelectedIndex].CategoryNote;
+            CategoryTextBox.Text = Notes.NoteList[NoteListBox.SelectedIndex].CategoryNote.ToString();
             CreatedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].CreationTime;
             ModifiedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].LastChangeTime;
-            ReadOnlyListView.Text = Notes.NoteList[NoteListBox.SelectedIndex].TextNote;
+            RichTextBox.Text = Notes.NoteList[NoteListBox.SelectedIndex].TextNote;
         }
         private void EditButton_Click(object sender, EventArgs e)
         {
@@ -63,10 +64,11 @@ namespace NoteAppUl
             var sIndex = NoteListBox.SelectedIndex;
             var addater = new NoteForm();
             addater.Note = null;
-            var result = addater.ShowDialog(this);
+            var result = addater.ShowDialog();
             if (result == DialogResult.OK)
             {              
                 var upCont = addater.Note;
+                NoteListBox.Items.Clear();
                 Notes.NoteList.Add(upCont);
                 foreach (var note in Notes.NoteList)
                 {
@@ -109,6 +111,21 @@ namespace NoteAppUl
         private void DeleteButton_Click_1(object sender, EventArgs e)
         {
             DeleteNote();
-        }   
+        }
+
+        private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddNote();
+        }
+
+        private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EditNote();
+        }
+
+        private void RemoveNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteNote();
+        }
     }
 }

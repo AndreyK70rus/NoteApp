@@ -42,9 +42,9 @@ namespace NoteApp
         {
             set
             {
-                _CategoryNote = CategoryNote;
+                _CategoryNote = value;
             }
-            get { return CategoryNote; }
+            get { return _CategoryNote; }
         }
         
         /// <summary>
@@ -58,7 +58,7 @@ namespace NoteApp
         {
             set
             {
-                _TextNote = TextNote;
+                _TextNote = value;
             }
             get { return _TextNote; }
         }     
@@ -73,9 +73,8 @@ namespace NoteApp
         public DateTime CreationTime
         {
             set
-            {
-                CreationTime = DateTime.Today;
-                _CreationTime = CreationTime;
+            {                 
+                _CreationTime = value;
             }
             get { return _CreationTime; }
         }
@@ -90,9 +89,8 @@ namespace NoteApp
         public DateTime LastChangeTime
         {
             set
-            {
-                LastChangeTime = DateTime.Today;
-                _LastChangeTime = LastChangeTime;
+            {              
+                _LastChangeTime = value;
             }
             get { return _LastChangeTime; }
         }

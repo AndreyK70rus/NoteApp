@@ -12,7 +12,7 @@ namespace NoteApp
     /// </summary>
     public enum  CategoryNote
     {
-      All,  //Всё
+      All = 0,  //Всё
       Work,  //Работа
       House,  //Дом            
       Heath_and_sport,  //Здоровье и спорт  

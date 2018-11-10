@@ -50,7 +50,7 @@ namespace NoteApp
                     S1 = (Project)deserializedObject;
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 S1 = new Project();
             }
