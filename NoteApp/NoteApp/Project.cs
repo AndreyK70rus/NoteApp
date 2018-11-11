@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 using System.Collections;
 
 namespace NoteApp
+
+
 {
+
     /// <summary>
-    /// Класс project с модификатором доступа public. Содержит список всех заметок, созданных в прило-жении.
+    /// Класс project с модификатором доступа public. Содержит список всех заметок, созданных в приложении.
     /// </summary>
     public class Project
-    {
-        
+    {      
         public List<Note> NoteList = new List<Note>();
-        
-        
-
-
     }
+
 }

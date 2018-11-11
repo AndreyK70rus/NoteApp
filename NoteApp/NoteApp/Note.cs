@@ -3,26 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+
 namespace NoteApp
+
+
 {
     /// <summary>
     /// Класс Note с публичным модификатором доступа.
+    /// Содержит поля: "Название","Категория заметки","Текст заметки","Дата создания","Дата последнего изменения".
+    /// Поле "Название" содержит исключение. Для остальных полей записаны автосвойства.
     /// </summary>
     public class Note
     {
+
         /// <summary>
-        /// Поле _Title "Название" с модификатором доступа public.
+        /// Поле _Title "Название" с модификатором доступа private.
         /// </summary>
         private string _Title;
+
         /// <summary>
-        /// Метод геттер и сеттер для поля _Title.
+        /// Свойство для поля _Title с модификатором доступа public.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Добавление введенного значения в поле _Title.</returns>
         public string Title
         {
             set
             {
-                if (value.Length > 50)
+                if (value.Length > 50) 
                 {
                     throw new ArgumentException("Длина поля превышает 50 символов");
                 }
@@ -31,13 +38,16 @@ namespace NoteApp
             }
             get { return _Title; }
         }
+
         /// <summary>
-        /// Поле _CategoryNote "Категория заметки" с модификатором доступа public.
+        /// Поле _CategoryNote "Категория заметки" с модификатором доступа private.
         /// </summary>
         private CategoryNote _CategoryNote;
+
         /// <summary>
-        /// Метод геттер и сеттер для поля _CategoryNote.
+        /// Автосвойство для поля _CategoryNote с модификатором доступа public.
         /// </summary>
+        /// <returns>Добавление введенного значения в поле _CategoryNote.</returns>
         public CategoryNote CategoryNote
         {
             set
@@ -48,12 +58,14 @@ namespace NoteApp
         }
         
         /// <summary>
-        /// Поле _TextNote "Текст заметки" с модификатором доступа public.
+        /// Поле _TextNote "Текст заметки" с модификатором доступа private.
         /// </summary>
         private string _TextNote;
+
         /// <summary>
-        /// Метод геттер и сеттер для поля _TextNote
+        /// Автоссвойство для поля _TextNote "Текст заметки" с модификатором доступа public.
         /// </summary>
+        /// <returns>Добавление введенного значения в поле _TextNote.</returns>
         public string TextNote
         {
             set
@@ -62,14 +74,16 @@ namespace NoteApp
             }
             get { return _TextNote; }
         }     
+
         /// <summary>
-        /// Поле _CreationTime "Дата создания" с модификатором доступа public. Только для чтения.
+        /// Поле _CreationTime "Дата создания" с модификатором доступа private.
         /// </summary>
-        private  DateTime _CreationTime;
+        private DateTime _CreationTime;
+
         /// <summary>
-        /// Метод геттер для поля _CreationTime.
+        /// Автосвойство для поля _CreationTime с модификатором доступа public.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Добавление введенного значения в поле _CreationTime.</returns>
         public DateTime CreationTime
         {
             set
@@ -78,14 +92,16 @@ namespace NoteApp
             }
             get { return _CreationTime; }
         }
+
         /// <summary>
         /// Поле _LastChangeTime "Время последнего изменения" с модификатором доступа private.
         /// </summary>
         private DateTime _LastChangeTime;
+
         /// <summary>
-        /// Метод геттер для поля _LastChangeTime.
+        /// Автосвойство для поля _LastChangeTime с модификатором доступа public.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Добавление введенного значения в поле _LastCreationTime.</returns>
         public DateTime LastChangeTime
         {
             set
@@ -93,9 +109,7 @@ namespace NoteApp
                 _LastChangeTime = value;
             }
             get { return _LastChangeTime; }
-        }
-
-   
-       
+        }  
+        
     }
 } 
