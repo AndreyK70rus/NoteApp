@@ -91,16 +91,19 @@
             // 
             // TitleTextBox
             // 
+            this.TitleTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.TitleTextBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.TitleTextBox.Location = new System.Drawing.Point(78, 8);
             this.TitleTextBox.Name = "TitleTextBox";
-            this.TitleTextBox.Size = new System.Drawing.Size(587, 20);
+            this.TitleTextBox.Size = new System.Drawing.Size(616, 20);
             this.TitleTextBox.TabIndex = 7;
             this.TitleTextBox.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // SaveButton
             // 
-            this.SaveButton.Location = new System.Drawing.Point(516, 389);
+            this.SaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SaveButton.Location = new System.Drawing.Point(538, 371);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
             this.SaveButton.TabIndex = 8;
@@ -124,7 +127,8 @@
             // 
             // Button
             // 
-            this.Button.Location = new System.Drawing.Point(597, 389);
+            this.Button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Button.Location = new System.Drawing.Point(619, 371);
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(75, 23);
             this.Button.TabIndex = 15;
@@ -134,9 +138,12 @@
             // 
             // NoteTextBox
             // 
+            this.NoteTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.NoteTextBox.Location = new System.Drawing.Point(15, 92);
             this.NoteTextBox.Name = "NoteTextBox";
-            this.NoteTextBox.Size = new System.Drawing.Size(657, 291);
+            this.NoteTextBox.Size = new System.Drawing.Size(679, 273);
             this.NoteTextBox.TabIndex = 16;
             this.NoteTextBox.Text = "";
             // 
@@ -144,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(684, 437);
+            this.ClientSize = new System.Drawing.Size(706, 397);
             this.Controls.Add(this.NoteTextBox);
             this.Controls.Add(this.Button);
             this.Controls.Add(this.dateTimePicker2);
@@ -157,6 +164,7 @@
             this.Controls.Add(this.CategoryLabel);
             this.Controls.Add(this.TitleLabel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(722, 435);
             this.Name = "NoteForm";
             this.Text = "NoteForm";
             this.ResumeLayout(false);

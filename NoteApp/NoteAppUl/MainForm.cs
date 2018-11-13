@@ -15,6 +15,7 @@ namespace NoteAppUl
     public partial class MainForm : Form
     {
         public static Project Notes = new Project();
+
         public MainForm()
         {
             InitializeComponent();
@@ -32,33 +33,41 @@ namespace NoteAppUl
             CategoryComboBox.Items.Add(CategoryNote.Finance);
             CategoryComboBox.Items.Add(CategoryNote.Another);             
         }
+
         AboutMe dlg = new AboutMe();
-        NoteForm dlg2 = new NoteForm();
+
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();           
         }
+
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {             
             dlg.ShowDialog(this);
         }
+
         private void AddButton_Click(object sender, EventArgs e)
         {
             AddNote();
         }
+
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
-            textBox1.Text = Notes.NoteList[NoteListBox.SelectedIndex].Title;
-            CategoryTextBox.Text = Notes.NoteList[NoteListBox.SelectedIndex].CategoryNote.ToString();
-            CreatedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].CreationTime;
-            ModifiedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].LastChangeTime;
-            RichTextBox.Text = Notes.NoteList[NoteListBox.SelectedIndex].TextNote;
+            if (NoteListBox.SelectedIndex != -1)
+            {
+                textBox1.Text = Notes.NoteList[NoteListBox.SelectedIndex].Title;
+                CategoryTextBox.Text = Notes.NoteList[NoteListBox.SelectedIndex].CategoryNote.ToString();
+                CreatedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].CreationTime;
+                ModifiedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].LastChangeTime;
+                RichTextBox.Text = Notes.NoteList[NoteListBox.SelectedIndex].TextNote;
+            }
         }
+
         private void EditButton_Click(object sender, EventArgs e)
         {
             EditNote();
         }
+
         private void AddNote() // Метод добавления заметки.
         {
             var sIndex = NoteListBox.SelectedIndex;
@@ -77,6 +86,7 @@ namespace NoteAppUl
                 ProjectManager.Save(MainForm.Notes);
             }            
         }
+
         private void EditNote() // Метод редактирования заметки.
         {
             var sIndex = NoteListBox.SelectedIndex;
@@ -94,23 +104,34 @@ namespace NoteAppUl
                     NoteListBox.Items.Add(note.Title);
                 }
                 ProjectManager.Save(MainForm.Notes);
+                textBox1.Text = upCont.Title;
+                CategoryTextBox.Text = upCont.CategoryNote.ToString();
+                CreatedDateTimePicker.Value =upCont.CreationTime;
+                ModifiedDateTimePicker.Value = upCont.LastChangeTime;
+                RichTextBox.Text = upCont.TextNote;
             }
             
         }
+
         private void DeleteNote() //Метод удаления заметки.
         {
-            var selectedIndex = NoteListBox.SelectedIndex;
-            Notes.NoteList.RemoveAt(selectedIndex);
-            ProjectManager.Save(Notes);
-            NoteListBox.Items.Clear();
-            foreach (var note in Notes.NoteList)
+            if (MessageBox.Show("Do you really want to remove this note: " + Notes.NoteList[NoteListBox.SelectedIndex].Title,
+              "DeleteNote", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
             {
-                NoteListBox.Items.Add(note.Title);
+                var selectedIndex = NoteListBox.SelectedIndex;
+                Notes.NoteList.RemoveAt(selectedIndex);
+                ProjectManager.Save(Notes);
+                NoteListBox.Items.Clear();
+                foreach (var note in Notes.NoteList)
+                {
+                    NoteListBox.Items.Add(note.Title);
+                }
             }
         }
-        private void DeleteButton_Click_1(object sender, EventArgs e)
+
+        private void ExitToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            DeleteNote();
+            Application.Exit();
         }
 
         private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
@@ -124,6 +145,16 @@ namespace NoteAppUl
         }
 
         private void RemoveNoteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DeleteNote();
+        }
+
+        private void AboutToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            dlg.ShowDialog(this);
+        }
+
+        private void DeleteButton_Click(object sender, EventArgs e)
         {
             DeleteNote();
         }

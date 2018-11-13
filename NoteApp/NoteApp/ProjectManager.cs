@@ -19,7 +19,7 @@ namespace NoteApp
 
         private const string _FileSave = @"C:\Users\Андрей Калинин\Documents\NoteApp.notes";
 
-        public static void Save(Project S1) // Cериализация.
+        public static void Save(Project SaveNote) // Cериализация.
         {
             // Создаем экземпляр сериализатора.
             JsonSerializer serializer = new JsonSerializer()
@@ -33,14 +33,14 @@ namespace NoteApp
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 // Вызываем сериализацию и передаем объект, который хотим сериализовать.
-                serializer.Serialize(writer, S1);
+                serializer.Serialize(writer, SaveNote);
             }
         }
 
         public static Project Download() // Десериализация.
         {
             // Создаём переменную, в которую поместим результат десериализации.
-            Project S1 = null;
+            Project LoadNote = null;
             // Создаем экхемпляр сериализатора.
             JsonSerializer serializer = new JsonSerializer()
             {
@@ -56,16 +56,16 @@ namespace NoteApp
                 {
                     // Вызываем десериализацию и явно преобразуем результат в целевой тип данных.
                     var deserializedObject = serializer.Deserialize(reader);
-                    S1 = (Project)deserializedObject;
+                    LoadNote = (Project)deserializedObject;
                     }
             }
             catch (Exception)
             {
-                S1 = new Project();
+                LoadNote = new Project();
             }
-            if (S1 == null)
-                S1 = new Project();
-            return S1;
+            if (LoadNote == null)
+                LoadNote = new Project();
+            return LoadNote;
         }
 
     }

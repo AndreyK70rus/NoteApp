@@ -85,6 +85,7 @@ namespace NoteAppUl
             DialogResult = DialogResult.Cancel;
             Close();
         }
+
     }
 
 }
