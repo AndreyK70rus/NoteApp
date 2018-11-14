@@ -12,8 +12,8 @@ using NoteApp;
 namespace NoteAppUl
 {
     public partial class NoteForm : Form
-    {    
-        public Note Cont;    
+    {
+        private Note Cont;    
         public Note Note
         {
             get  { return Cont; }
@@ -30,8 +30,8 @@ namespace NoteAppUl
                 }
                 else
                 {
-                    TitleTextBox.Text = "";
-                    CategoryComboBox.Text = "";
+                    TitleTextBox.Text = "Без названия";
+                    CategoryComboBox.SelectedItem = "";
                     dateTimePicker1.Value = DateTime.Today;
                     dateTimePicker2.Value = DateTime.Today;
                     NoteTextBox.Text = "";
@@ -41,7 +41,6 @@ namespace NoteAppUl
 
         public NoteForm()
         {
-
             InitializeComponent();
             dateTimePicker1.Enabled = false;
             dateTimePicker2.Enabled = false;
@@ -52,7 +51,7 @@ namespace NoteAppUl
             CategoryComboBox.Items.Add(CategoryNote.People);
             CategoryComboBox.Items.Add(CategoryNote.Documents);
             CategoryComboBox.Items.Add(CategoryNote.Finance);
-            CategoryComboBox.Items.Add(CategoryNote.Another);         
+            CategoryComboBox.Items.Add(CategoryNote.Another);
         }
         private void Button2_Click(object sender, EventArgs e)
         {
@@ -65,7 +64,7 @@ namespace NoteAppUl
             if (Text.Length > 50 )
             {
                 MessageBox.Show("Длина поля превышает 50 символов","Название заметки",
-                    MessageBoxButtons.OKCancel,
+                    MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
             }
         }
@@ -73,12 +72,34 @@ namespace NoteAppUl
         {
             Cont = new Note();
             Cont.Title = TitleTextBox.Text;
-            Cont.CategoryNote = (CategoryNote)CategoryComboBox.SelectedItem;
             Cont.CreationTime = dateTimePicker1.Value;
             Cont.LastChangeTime = DateTime.Now;
-            Cont.TextNote = NoteTextBox.Text;
+            if (CategoryComboBox.SelectedItem != null)
+            {
+                Cont.CategoryNote = (CategoryNote)CategoryComboBox.SelectedItem;
+            }
+            else
+            {
+                if(MessageBox.Show("Выберите категорию заметки", "Ошибка", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    CategoryComboBox.BackColor = Color.Red;
+                }   
+            }           
+            string Text = NoteTextBox.Text;
+            if (Text.Length > 0)
+            {
+                Cont.TextNote = NoteTextBox.Text;
+            }
+            else
+            {
+                if(MessageBox.Show("Введите текст заметки", "Ошибка", MessageBoxButtons.OK) == DialogResult.OK)
+                {
+                    NoteTextBox.BackColor = Color.Red;
+                }
+            }
             DialogResult = DialogResult.OK;
             Close();
+
         }
         private void Button_Click(object sender, EventArgs e)
         {

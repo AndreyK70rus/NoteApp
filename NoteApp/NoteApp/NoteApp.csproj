@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoryNote.cs" />
-    <Compile Include="ICloneable.cs" />
     <Compile Include="Note.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectManager.cs" />

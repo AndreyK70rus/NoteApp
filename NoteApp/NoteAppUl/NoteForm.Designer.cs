@@ -87,7 +87,7 @@
             this.CategoryComboBox.Location = new System.Drawing.Point(78, 37);
             this.CategoryComboBox.Name = "CategoryComboBox";
             this.CategoryComboBox.Size = new System.Drawing.Size(121, 21);
-            this.CategoryComboBox.TabIndex = 14;
+            this.CategoryComboBox.TabIndex = 8;
             // 
             // TitleTextBox
             // 
@@ -106,7 +106,7 @@
             this.SaveButton.Location = new System.Drawing.Point(538, 371);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(75, 23);
-            this.SaveButton.TabIndex = 8;
+            this.SaveButton.TabIndex = 10;
             this.SaveButton.Text = "OK";
             this.SaveButton.UseVisualStyleBackColor = true;
             this.SaveButton.Click += new System.EventHandler(this.Button1_Click);
@@ -131,7 +131,7 @@
             this.Button.Location = new System.Drawing.Point(619, 371);
             this.Button.Name = "Button";
             this.Button.Size = new System.Drawing.Size(75, 23);
-            this.Button.TabIndex = 15;
+            this.Button.TabIndex = 11;
             this.Button.Text = "Cancel";
             this.Button.UseVisualStyleBackColor = true;
             this.Button.Click += new System.EventHandler(this.Button_Click);
@@ -144,7 +144,7 @@
             this.NoteTextBox.Location = new System.Drawing.Point(15, 92);
             this.NoteTextBox.Name = "NoteTextBox";
             this.NoteTextBox.Size = new System.Drawing.Size(679, 273);
-            this.NoteTextBox.TabIndex = 16;
+            this.NoteTextBox.TabIndex = 9;
             this.NoteTextBox.Text = "";
             // 
             // NoteForm

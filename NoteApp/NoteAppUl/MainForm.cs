@@ -83,48 +83,56 @@ namespace NoteAppUl
                 {
                     NoteListBox.Items.Add(note.Title);
                 }
-                ProjectManager.Save(MainForm.Notes);
+                ProjectManager.Save(Notes);
             }            
         }
 
         private void EditNote() // Метод редактирования заметки.
         {
-            var sIndex = NoteListBox.SelectedIndex;
-            var inner = new NoteForm();
-            inner.Note = Notes.NoteList[sIndex];
-            var result = inner.ShowDialog(this);
-            if (result == DialogResult.OK)
+            if (NoteListBox.SelectedIndex != -1)
             {
-                var upCont = inner.Note;
-                NoteListBox.Items.Clear();
-                Notes.NoteList.RemoveAt(sIndex);
-                Notes.NoteList.Add(upCont);
-                foreach (var note in Notes.NoteList)
-                {
-                    NoteListBox.Items.Add(note.Title);
-                }
-                ProjectManager.Save(MainForm.Notes);
-                textBox1.Text = upCont.Title;
-                CategoryTextBox.Text = upCont.CategoryNote.ToString();
-                CreatedDateTimePicker.Value =upCont.CreationTime;
-                ModifiedDateTimePicker.Value = upCont.LastChangeTime;
-                RichTextBox.Text = upCont.TextNote;
-            }
+
             
+         
+                var sIndex = NoteListBox.SelectedIndex;
+                var inner = new NoteForm();
+                inner.Note = Notes.NoteList[sIndex];
+                var result = inner.ShowDialog(this);
+                if (result == DialogResult.OK)
+                {
+                    var upCont = inner.Note;
+                    NoteListBox.Items.Clear();
+                    Notes.NoteList.RemoveAt(sIndex);
+                    Notes.NoteList.Add(upCont);
+                    foreach (var note in Notes.NoteList)
+                    {
+                        NoteListBox.Items.Add(note.Title);
+                    }
+                    ProjectManager.Save(MainForm.Notes);
+                    textBox1.Text = upCont.Title;
+                    CategoryTextBox.Text = upCont.CategoryNote.ToString();
+                    CreatedDateTimePicker.Value = upCont.CreationTime;
+                    ModifiedDateTimePicker.Value = upCont.LastChangeTime;
+                    RichTextBox.Text = upCont.TextNote;
+                }
+            }
         }
 
         private void DeleteNote() //Метод удаления заметки.
         {
-            if (MessageBox.Show("Do you really want to remove this note: " + Notes.NoteList[NoteListBox.SelectedIndex].Title,
-              "DeleteNote", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
+            if (NoteListBox.SelectedIndex != -1)
             {
-                var selectedIndex = NoteListBox.SelectedIndex;
-                Notes.NoteList.RemoveAt(selectedIndex);
-                ProjectManager.Save(Notes);
-                NoteListBox.Items.Clear();
-                foreach (var note in Notes.NoteList)
+                if (MessageBox.Show("Do you really want to remove this note: " + Notes.NoteList[NoteListBox.SelectedIndex].Title,
+                  "DeleteNote", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
-                    NoteListBox.Items.Add(note.Title);
+                    var selectedIndex = NoteListBox.SelectedIndex;
+                    Notes.NoteList.RemoveAt(selectedIndex);
+                    ProjectManager.Save(Notes);
+                    NoteListBox.Items.Clear();
+                    foreach (var note in Notes.NoteList)
+                    {
+                        NoteListBox.Items.Add(note.Title);
+                    }
                 }
             }
         }
@@ -136,6 +144,7 @@ namespace NoteAppUl
 
         private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             AddNote();
         }
 
