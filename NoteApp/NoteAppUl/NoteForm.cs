@@ -61,9 +61,9 @@ namespace NoteAppUl
    private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             string Text = TitleTextBox.Text;
-            if (Text.Length > 50 )
+            if (Text.Length > 50)
             {
-                MessageBox.Show("Длина поля превышает 50 символов","Название заметки",
+                MessageBox.Show("Длина поля превышает 50 символов", "Название заметки",
                     MessageBoxButtons.OK,
                 MessageBoxIcon.Warning);
             }
@@ -74,31 +74,24 @@ namespace NoteAppUl
             Cont.Title = TitleTextBox.Text;
             Cont.CreationTime = dateTimePicker1.Value;
             Cont.LastChangeTime = DateTime.Now;
-            if (CategoryComboBox.SelectedItem != null)
+            string Text = NoteTextBox.Text;
+            if (CategoryComboBox.SelectedItem != null && Text.Length > 0)
             {
                 Cont.CategoryNote = (CategoryNote)CategoryComboBox.SelectedItem;
-            }
-            else
-            {
-                if(MessageBox.Show("Выберите категорию заметки", "Ошибка", MessageBoxButtons.OK) == DialogResult.OK)
-                {
-                    CategoryComboBox.BackColor = Color.Red;
-                }   
-            }           
-            string Text = NoteTextBox.Text;
-            if (Text.Length > 0)
-            {
                 Cont.TextNote = NoteTextBox.Text;
+                DialogResult = DialogResult.OK;
+                Close();
             }
-            else
+            if (CategoryComboBox.SelectedItem == null)
             {
-                if(MessageBox.Show("Введите текст заметки", "Ошибка", MessageBoxButtons.OK) == DialogResult.OK)
-                {
-                    NoteTextBox.BackColor = Color.Red;
-                }
+                MessageBox.Show("Выберите категорию заметки", "Ошибка",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                CategoryComboBox.BackColor = Color.LightSalmon;
+            }   
+            if (Text.Length < 1)
+            {
+                MessageBox.Show("Введите текст заметки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                NoteTextBox.BackColor = Color.LightSalmon;
             }
-            DialogResult = DialogResult.OK;
-            Close();
 
         }
         private void Button_Click(object sender, EventArgs e)

@@ -91,9 +91,6 @@ namespace NoteAppUl
         {
             if (NoteListBox.SelectedIndex != -1)
             {
-
-            
-         
                 var sIndex = NoteListBox.SelectedIndex;
                 var inner = new NoteForm();
                 inner.Note = Notes.NoteList[sIndex];
@@ -133,6 +130,13 @@ namespace NoteAppUl
                     {
                         NoteListBox.Items.Add(note.Title);
                     }
+                    textBox1.Text = "";
+                    CategoryTextBox.Text = "";
+                    DateTime date1 = new DateTime(2018, 9, 1);
+                    DateTime date2 = new DateTime(2018, 9, 1);
+                    CreatedDateTimePicker.Value = date1;
+                    ModifiedDateTimePicker.Value = date2;
+                    RichTextBox.Text = "";
                 }
             }
         }

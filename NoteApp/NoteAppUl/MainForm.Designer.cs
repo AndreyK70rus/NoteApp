@@ -167,6 +167,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.CreatedDateTimePicker.Enabled = false;
             this.CreatedDateTimePicker.Location = new System.Drawing.Point(299, 79);
+            this.CreatedDateTimePicker.MinDate = new System.DateTime(2018, 9, 1, 0, 0, 0, 0);
             this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
             this.CreatedDateTimePicker.Size = new System.Drawing.Size(146, 20);
             this.CreatedDateTimePicker.TabIndex = 14;
@@ -178,6 +179,7 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ModifiedDateTimePicker.Enabled = false;
             this.ModifiedDateTimePicker.Location = new System.Drawing.Point(499, 79);
+            this.ModifiedDateTimePicker.MinDate = new System.DateTime(2018, 9, 1, 0, 0, 0, 0);
             this.ModifiedDateTimePicker.Name = "ModifiedDateTimePicker";
             this.ModifiedDateTimePicker.Size = new System.Drawing.Size(146, 20);
             this.ModifiedDateTimePicker.TabIndex = 15;

@@ -51,7 +51,7 @@ namespace NoteApp
         public CategoryNote CategoryNote
         {
             set
-            {
+            { 
                 _CategoryNote = value;
             }
             get { return _CategoryNote; }
