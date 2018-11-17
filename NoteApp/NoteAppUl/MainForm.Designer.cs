@@ -64,11 +64,11 @@
             this.NoteListBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.NoteListBox.FormattingEnabled = true;
             this.NoteListBox.Location = new System.Drawing.Point(5, 52);
-            this.NoteListBox.MaximumSize = new System.Drawing.Size(232, 1000);
-            this.NoteListBox.MinimumSize = new System.Drawing.Size(232, 355);
+            this.NoteListBox.MaximumSize = new System.Drawing.Size(285, 1000);
+            this.NoteListBox.MinimumSize = new System.Drawing.Size(285, 355);
             this.NoteListBox.Name = "NoteListBox";
             this.NoteListBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.NoteListBox.Size = new System.Drawing.Size(232, 355);
+            this.NoteListBox.Size = new System.Drawing.Size(285, 355);
             this.NoteListBox.TabIndex = 4;
             this.NoteListBox.SelectedIndexChanged += new System.EventHandler(this.NoteListBox_SelectedIndexChanged);
             // 
@@ -88,7 +88,7 @@
             // 
             this.CategoryComboBox.Location = new System.Drawing.Point(84, 23);
             this.CategoryComboBox.Name = "CategoryComboBox";
-            this.CategoryComboBox.Size = new System.Drawing.Size(153, 21);
+            this.CategoryComboBox.Size = new System.Drawing.Size(206, 21);
             this.CategoryComboBox.TabIndex = 23;
             // 
             // AddButton
@@ -131,7 +131,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Category.AutoSize = true;
-            this.Category.Location = new System.Drawing.Point(251, 52);
+            this.Category.Location = new System.Drawing.Point(296, 48);
             this.Category.Name = "Category";
             this.Category.Size = new System.Drawing.Size(52, 13);
             this.Category.TabIndex = 10;
@@ -143,7 +143,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Created1.AutoSize = true;
-            this.Created1.Location = new System.Drawing.Point(251, 82);
+            this.Created1.Location = new System.Drawing.Point(296, 78);
             this.Created1.Name = "Created1";
             this.Created1.Size = new System.Drawing.Size(47, 13);
             this.Created1.TabIndex = 11;
@@ -155,7 +155,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.Modified.AutoSize = true;
-            this.Modified.Location = new System.Drawing.Point(447, 82);
+            this.Modified.Location = new System.Drawing.Point(492, 78);
             this.Modified.Name = "Modified";
             this.Modified.Size = new System.Drawing.Size(50, 13);
             this.Modified.TabIndex = 12;
@@ -166,7 +166,7 @@
             this.CreatedDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.CreatedDateTimePicker.Enabled = false;
-            this.CreatedDateTimePicker.Location = new System.Drawing.Point(299, 79);
+            this.CreatedDateTimePicker.Location = new System.Drawing.Point(344, 75);
             this.CreatedDateTimePicker.MinDate = new System.DateTime(2018, 9, 1, 0, 0, 0, 0);
             this.CreatedDateTimePicker.Name = "CreatedDateTimePicker";
             this.CreatedDateTimePicker.Size = new System.Drawing.Size(146, 20);
@@ -178,7 +178,7 @@
             this.ModifiedDateTimePicker.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.ModifiedDateTimePicker.Enabled = false;
-            this.ModifiedDateTimePicker.Location = new System.Drawing.Point(499, 79);
+            this.ModifiedDateTimePicker.Location = new System.Drawing.Point(544, 75);
             this.ModifiedDateTimePicker.MinDate = new System.DateTime(2018, 9, 1, 0, 0, 0, 0);
             this.ModifiedDateTimePicker.Name = "ModifiedDateTimePicker";
             this.ModifiedDateTimePicker.Size = new System.Drawing.Size(146, 20);
@@ -193,10 +193,10 @@
             this.CategoryTextBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.CategoryTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.CategoryTextBox.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.CategoryTextBox.Location = new System.Drawing.Point(303, 53);
+            this.CategoryTextBox.Location = new System.Drawing.Point(348, 49);
             this.CategoryTextBox.Name = "CategoryTextBox";
             this.CategoryTextBox.ReadOnly = true;
-            this.CategoryTextBox.Size = new System.Drawing.Size(107, 13);
+            this.CategoryTextBox.Size = new System.Drawing.Size(235, 13);
             this.CategoryTextBox.TabIndex = 18;
             // 
             // splitter1
@@ -213,11 +213,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BackColor = System.Drawing.SystemColors.Control;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.textBox1.Location = new System.Drawing.Point(254, 23);
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.textBox1.Location = new System.Drawing.Point(299, 19);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(390, 25);
+            this.textBox1.Size = new System.Drawing.Size(518, 23);
             this.textBox1.TabIndex = 21;
             // 
             // DeleteButton
@@ -241,10 +241,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.RichTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.RichTextBox.Location = new System.Drawing.Point(251, 105);
+            this.RichTextBox.Location = new System.Drawing.Point(299, 105);
             this.RichTextBox.Name = "RichTextBox";
             this.RichTextBox.ReadOnly = true;
-            this.RichTextBox.Size = new System.Drawing.Size(434, 331);
+            this.RichTextBox.Size = new System.Drawing.Size(514, 331);
             this.RichTextBox.TabIndex = 24;
             this.RichTextBox.Text = "";
             // 
@@ -257,7 +257,7 @@
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(691, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(819, 24);
             this.menuStrip1.TabIndex = 25;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -274,7 +274,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click_1);
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
             // editToolStripMenuItem
             // 
@@ -318,7 +318,7 @@
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click_1);
             // 
@@ -327,7 +327,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(691, 442);
+            this.ClientSize = new System.Drawing.Size(819, 442);
             this.Controls.Add(this.RichTextBox);
             this.Controls.Add(this.DeleteButton);
             this.Controls.Add(this.textBox1);
@@ -348,7 +348,7 @@
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(707, 480);
+            this.MinimumSize = new System.Drawing.Size(835, 480);
             this.Name = "MainForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.Text = "NoteApp";

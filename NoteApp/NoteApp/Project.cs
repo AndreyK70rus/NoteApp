@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections;
 
-namespace NoteApp
 
+namespace NoteApp
 
 {
 
@@ -15,6 +15,7 @@ namespace NoteApp
     /// </summary>
     public class Project
     {      
+        // Создаем массив заметок.
         public List<Note> NoteList = new List<Note>();
     }
 
