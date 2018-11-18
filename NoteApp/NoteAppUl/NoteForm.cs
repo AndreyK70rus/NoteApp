@@ -73,7 +73,7 @@ namespace NoteAppUl
         }
 
         // Кнопка элемента управления TextBox.
-   private void TextBox1_TextChanged(object sender, EventArgs e)
+        private void TextBox1_TextChanged(object sender, EventArgs e)
         {
             string Text = TitleTextBox.Text;
             // Условие для проверки длины поля.
