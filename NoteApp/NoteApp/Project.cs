@@ -15,8 +15,10 @@ namespace NoteApp
     /// </summary>
     public class Project
     {      
-        // Создаем массив заметок.
-        public List<Note> NoteList = new List<Note>();
+        /// <summary>
+        /// Создаем массив заметок.
+        /// </summary>
+        public List<Note> NotesCollection = new List<Note>();
     }
 
 }

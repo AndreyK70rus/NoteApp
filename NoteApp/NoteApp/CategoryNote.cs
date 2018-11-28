@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 
 namespace NoteApp
-
 {
     /// <summary>
     /// Перечисление "Категория заметки". В структуру перечисления входят: все категории, работа, дом, Здоровье и спорт,
     /// люди, документы, финансы, другое.
     /// </summary>
-    public enum  CategoryNote
+    public enum  NoteCategory
     {
       All = 0,
       Work,
       House,           
-      Heath_and_sport,  
+      HealthAndSport,  
       People, 
       Documents, 
       Finance,
       Another  
-    };
-   
+    };  
 }

@@ -15,55 +15,41 @@ namespace NoteAppUl
     public partial class MainForm : Form
     {
         // Создаем экземпяр класса Project.
-        public static Project Notes = new Project();
+        Project Project = new Project();
 
         public MainForm()
         {
             InitializeComponent();
             // Создаем экземпяр класса ProjectManager.
-            Notes = ProjectManager.Download();
+            Project = ProjectManager.Load();
             // Выгружаем все заметки из массива и добавляем в листбокс название.
-            foreach (var note in Notes.NoteList)
+            foreach (var note in Project.NotesCollection)
             {
                 NoteListBox.Items.Add(note.Title);
             }
             // Добавляем в элемент управления ComboBox перечисление. Категория заметки - Все.
-            CategoryComboBox.Items.Add(CategoryNote.All);
-            // Категория заметки - Работа.
-            CategoryComboBox.Items.Add(CategoryNote.Work);
-            // Категория заметки - Дом.
-            CategoryComboBox.Items.Add(CategoryNote.House);
-            // Категория заметки - Здоровье и спорт.
-            CategoryComboBox.Items.Add(CategoryNote.Heath_and_sport);
-            // Категория заметки - Люди.
-            CategoryComboBox.Items.Add(CategoryNote.People);
-            // Категория заметки - Документы.
-            CategoryComboBox.Items.Add(CategoryNote.Documents);
-            // Категория заметки - Финансы.
-            CategoryComboBox.Items.Add(CategoryNote.Finance);
-            // Категория заметки - Другое.
-            CategoryComboBox.Items.Add(CategoryNote.Another);             
+            foreach (var category in Enum.GetValues(typeof(NoteCategory)))
+            {
+                CategoryComboBox.Items.Add(category);
+            }
         }
-
-        // Создаем экземпляр формы AboutMe.
-        AboutMe dlg = new AboutMe();
 
         // Кнопка элемента управления ListBox.
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // В том случае, если пользователь случайно нажмет на свободное место в листбоксе,
-            // а не на конкретную заметку, ничего не произойдет.
-            if (NoteListBox.SelectedIndex != -1)
+            if (NoteListBox.SelectedIndex == -1)
             {
-                // При выборе заметки из листбокса всем полям правой панели присваиваются значения выбранной заметки.
-                textBox1.Text = Notes.NoteList[NoteListBox.SelectedIndex].Title;
-                CategoryTextBox.Text = Notes.NoteList[NoteListBox.SelectedIndex].CategoryNote.ToString();
-                CreatedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].CreationTime;
-                ModifiedDateTimePicker.Value = Notes.NoteList[NoteListBox.SelectedIndex].LastChangeTime;
-                RichTextBox.Text = Notes.NoteList[NoteListBox.SelectedIndex].TextNote;
+                return;
             }
-        }
 
+            // При выборе заметки из листбокса всем полям правой панели присваиваются значения выбранной заметки.
+            textBox1.Text = Project.NotesCollection[NoteListBox.SelectedIndex].Title;
+            CategoryTextBox.Text = Project.NotesCollection[NoteListBox.SelectedIndex].CategoryNote.ToString();
+            CreatedDateTimePicker.Value = Project.NotesCollection[NoteListBox.SelectedIndex].CreationTime;
+            ModifiedDateTimePicker.Value = Project.NotesCollection[NoteListBox.SelectedIndex].LastChangeTime;
+            RichTextBox.Text = Project.NotesCollection[NoteListBox.SelectedIndex].TextNote;
+            
+        }
 
         // Кнопка элемента управления Button в виде иконки добавления новой заметки.
         private void AddButton_Click(object sender, EventArgs e)
@@ -116,92 +102,87 @@ namespace NoteAppUl
         // Кнопка из элемента управления menuStrip1, Help, About.
         private void AboutToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
+            // Создаем экземпляр формы AboutForm.
+            AboutForm Form = new AboutForm();
             // При нажатии на кнопку запускается форма AboutMe.
-            dlg.ShowDialog(this);
+            Form.ShowDialog(this);
         }
 
-        // Метод добавления заметки.
+        /// <summary>
+        /// Метод добавления новой заметки.
+        /// </summary>
         private void AddNote() 
         {
-            // Вытягиваем индекс из NotelistBox.
             var sIndex = NoteListBox.SelectedIndex;
-            // Создаем экземпляр формы NoteForm.
             var addater = new NoteForm();
-            // в свойство Note из формы NoteForm присваиваем значение null.
             addater.Note = null;
-            // В переменную result добавляем действие для открытия формы NoteForm.
             var result = addater.ShowDialog();
-            // Условие, если в форме NoteForm будет ножата кнопка OK.
             if (result == DialogResult.OK)
-            {         
-                // в переменную upCont поместятся значения полей формы NoteForm.
-                var upCont = addater.Note;
-                // Удаление предыдущих значений из NoteListBox.
+            {
+
+
+                var upNote = addater.Note;
                 NoteListBox.Items.Clear();
-                // Добавление значения полей в массив заметок.
-                Notes.NoteList.Add(upCont);
-                // Цикл который добавляет в массив заметок заметку.
-                foreach (var note in Notes.NoteList)
+                Project.NotesCollection.Add(upNote);
+                foreach (var note in Project.NotesCollection)
                 {
-                    // Добавляем в NoteListBox название добавленной заметки.
                     NoteListBox.Items.Add(note.Title);
                 }
-                // Сериализация.
-                ProjectManager.Save(Notes);
-            }            
-        }
-
-        // Метод редактирования заметки.
-        private void EditNote() 
-        {
-            // Условие для того, чтобы при нажатии на NoteListBox программа не завершалась аварийно.
-            if (NoteListBox.SelectedIndex != -1)
-            {
-                var sIndex = NoteListBox.SelectedIndex;
-                var inner = new NoteForm();
-                // Вытягиваем индекс выбранной заметки из массива заметок.
-                inner.Note = Notes.NoteList[sIndex];
-                var result = inner.ShowDialog(this);
-                if (result == DialogResult.OK)
-                {
-                    // В переменную upCont помещаем новые значения полей.
-                    var upCont = inner.Note;
-                    NoteListBox.Items.Clear();
-                    // Удаляем выбранную заметку по индексу.
-                    Notes.NoteList.RemoveAt(sIndex);
-                    // Добавляем новую заметку с измененными данными.
-                    Notes.NoteList.Add(upCont);
-                    foreach (var note in Notes.NoteList)
-                    {
-                        NoteListBox.Items.Add(note.Title);
-                    }
-                    // Сериализация
-                    ProjectManager.Save(MainForm.Notes);
-                    // Присваиваем в элементы управления правой части формы, значения редактированной заметки, для отображения.
-                    textBox1.Text = upCont.Title;
-                    CategoryTextBox.Text = upCont.CategoryNote.ToString();
-                    CreatedDateTimePicker.Value = upCont.CreationTime;
-                    ModifiedDateTimePicker.Value = upCont.LastChangeTime;
-                    RichTextBox.Text = upCont.TextNote;
-                }
+                ProjectManager.Save(Project);
             }
         }
 
-        //Метод удаления заметки.
+        /// <summary>
+        /// Метод редактирования выбранной заметки.
+        /// </summary>
+        private void EditNote() 
+        {
+            if (NoteListBox.SelectedIndex != -1)
+            {
+
+                var sIndex = NoteListBox.SelectedIndex;
+                var inner = new NoteForm();
+                inner.Note = Project.NotesCollection[sIndex];
+                var result = inner.ShowDialog(this);
+                if (result == DialogResult.OK)
+                {
+                    var upNote = inner.Note;
+                    NoteListBox.Items.Clear();
+                    Project.NotesCollection.RemoveAt(sIndex);
+                    Project.NotesCollection.Add(upNote);
+                    foreach (var note in Project.NotesCollection)
+                    {
+                        NoteListBox.Items.Add(note.Title);
+                    }
+                    ProjectManager.Save(Project);
+                    // Присваиваем в элементы управления правой части формы, значения редактированной заметки, для отображения.
+                    textBox1.Text = upNote.Title;
+                    CategoryTextBox.Text = upNote.CategoryNote.ToString();
+                    CreatedDateTimePicker.Value = upNote.CreationTime;
+                    ModifiedDateTimePicker.Value = upNote.LastChangeTime;
+                    RichTextBox.Text = upNote.TextNote;
+                }
+            } 
+        }
+
+        /// <summary>
+        /// Метода для удаления выбранной заметки.
+        /// </summary>
         private void DeleteNote() 
         {
             if (NoteListBox.SelectedIndex != -1)
             {
+
                 // Условие в котором выскакивает MessegeBox, целью подтверждения удаления заметки.
-                if (MessageBox.Show("Do you really want to remove this note: " + Notes.NoteList[NoteListBox.SelectedIndex].Title,
+                if (MessageBox.Show("Do you really want to remove this note: " + Project.NotesCollection[NoteListBox.SelectedIndex].Title,
                   "DeleteNote", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
                 {
                     var selectedIndex = NoteListBox.SelectedIndex;
-                    Notes.NoteList.RemoveAt(selectedIndex);
+                    Project.NotesCollection.RemoveAt(selectedIndex);
                     // После удаления заметки, сразу производим сериализацию.
-                    ProjectManager.Save(Notes);
+                    ProjectManager.Save(Project);
                     NoteListBox.Items.Clear();
-                    foreach (var note in Notes.NoteList)
+                    foreach (var note in Project.NotesCollection)
                     {
                         NoteListBox.Items.Add(note.Title);
                     }
@@ -214,8 +195,7 @@ namespace NoteAppUl
                     ModifiedDateTimePicker.Value = date2;
                     RichTextBox.Text = "";
                 }
-            }
+            }         
         }
-
     }
 }

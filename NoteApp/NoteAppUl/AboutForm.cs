@@ -12,9 +12,9 @@ using System.Diagnostics;
 
 namespace NoteAppUl
 {
-    public partial class AboutMe : Form
+    public partial class AboutForm : Form
     {
-        public AboutMe()
+        public AboutForm()
         {
             InitializeComponent();
         }
@@ -24,6 +24,11 @@ namespace NoteAppUl
         {
             // При нажатии на кнопку срабатывает ссылка на открытие репозитория расположенного на GitHub.
             Process.Start("https://github.com/AndreyK70rus/NoteApp");
+        }
+
+        private void LinkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("mailto:andreykalinin2@yandex.ru");
         }
     }
 }

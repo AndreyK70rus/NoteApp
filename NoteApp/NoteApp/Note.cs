@@ -9,17 +9,14 @@ namespace NoteApp
 
 {
     /// <summary>
-    /// Класс Note с публичным модификатором доступа.
-    /// Содержит поля: "Название","Категория заметки","Текст заметки","Дата создания","Дата последнего изменения".
-    /// Поле "Название" содержит исключение. Для остальных полей записаны автосвойства.
+    /// Класс Note с публичным модификатором доступа. 
     /// </summary>
     public class Note
     {
-
         /// <summary>
         /// Поле _Title "Название" с модификатором доступа private.
         /// </summary>
-        private string _Title;
+        private string _title;
 
         /// <summary>
         /// Свойство для поля _Title с модификатором доступа public.
@@ -34,33 +31,33 @@ namespace NoteApp
                     throw new ArgumentException("Длина поля превышает 50 символов");
                 }
                 else
-                    _Title = value;
+                    _title = value;
             }
-            get { return _Title; }
+            get { return _title; }
         }
 
         /// <summary>
         /// Поле _CategoryNote "Категория заметки" с модификатором доступа private.
         /// </summary>
-        private CategoryNote _CategoryNote;
+        private NoteCategory _categoryNote;
 
         /// <summary>
         /// Автосвойство для поля _CategoryNote с модификатором доступа public.
         /// </summary>
         /// <returns>Добавление введенного значения в поле _CategoryNote.</returns>
-        public CategoryNote CategoryNote
+        public NoteCategory CategoryNote
         {
             set
             { 
-                _CategoryNote = value;
+                _categoryNote = value;
             }
-            get { return _CategoryNote; }
+            get { return _categoryNote; }
         }
         
         /// <summary>
         /// Поле _TextNote "Текст заметки" с модификатором доступа private.
         /// </summary>
-        private string _TextNote;
+        private string _textNote;
 
         /// <summary>
         /// Автоссвойство для поля _TextNote "Текст заметки" с модификатором доступа public.
@@ -70,46 +67,56 @@ namespace NoteApp
         {
             set
             {
-                _TextNote = value;
+                _textNote = value;
             }
-            get { return _TextNote; }
+            get { return _textNote; }
         }     
 
         /// <summary>
         /// Поле _CreationTime "Дата создания" с модификатором доступа private.
         /// </summary>
-        private DateTime _CreationTime;
+        private DateTime _creationTime;
 
         /// <summary>
-        /// Автосвойство для поля _CreationTime с модификатором доступа public.
+        /// Свойство для поля _CreationTime с модификатором доступа public.
         /// </summary>
         /// <returns>Добавление введенного значения в поле _CreationTime.</returns>
         public DateTime CreationTime
         {
             set
-            {                 
-                _CreationTime = value;
+            {
+                var date1 = DateTime.Now;
+                if (value > date1)
+                {
+                    throw new ArgumentException("Дата создания не может превышать текущую дату");
+                }
+                _creationTime = value;
             }
-            get { return _CreationTime; }
+            get { return _creationTime; }
         }
 
         /// <summary>
         /// Поле _LastChangeTime "Время последнего изменения" с модификатором доступа private.
         /// </summary>
-        private DateTime _LastChangeTime;
+        private DateTime _lastChangeTime;
 
         /// <summary>
-        /// Автосвойство для поля _LastChangeTime с модификатором доступа public.
+        /// Свойство для поля _LastChangeTime с модификатором доступа public.
         /// </summary>
         /// <returns>Добавление введенного значения в поле _LastCreationTime.</returns>
         public DateTime LastChangeTime
         {
             set
-            {              
-                _LastChangeTime = value;
+            {
+                var date1 = DateTime.Now;
+                var date2 = CreationTime;
+                if (value > date1 && value > date2)
+                {
+                    throw new ArgumentException("Дата изменения не может превышать текущую дату и время создания");
+                }
+                _lastChangeTime = value;
             }
-            get { return _LastChangeTime; }
-        }  
-        
+            get { return _lastChangeTime; }
+        }         
     }
 } 

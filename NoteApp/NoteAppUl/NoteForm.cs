@@ -14,27 +14,27 @@ namespace NoteAppUl
     public partial class NoteForm : Form
     {
         /// <summary>
-        /// Поле Cont с типом данных Note и модификатором доступа private.
+        /// Поле NoteRepository с типом данных Note и модификатором доступа private.
         /// </summary>
-        private Note Cont;  
+        private Note NoteRepository;  
         
         /// <summary>
         /// Свойство для поля Note, которое возвращает значение в поле Cont.
         /// </summary>
         public Note Note
         {
-            get  { return Cont; }
+            get  { return NoteRepository; }
             set
             {
-                Cont = value;
+                NoteRepository = value;
                 // Условие при которм если поля заполнены, то их значения присваиваются в поля формы NoteForm. 
-                if (Cont != null)
+                if (NoteRepository != null)
                 {
-                    TitleTextBox.Text = Cont.Title;
-                    CategoryComboBox.SelectedItem = Cont.CategoryNote;
-                    dateTimePicker1.Value = Cont.CreationTime;
-                    dateTimePicker2.Value = Cont.LastChangeTime;
-                    NoteTextBox.Text = Cont.TextNote;
+                    TitleTextBox.Text = NoteRepository.Title;
+                    CategoryComboBox.SelectedItem = NoteRepository.CategoryNote;
+                    dateTimePicker1.Value = NoteRepository.CreationTime;
+                    dateTimePicker2.Value = NoteRepository.LastChangeTime;
+                    NoteTextBox.Text = NoteRepository.TextNote;
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace NoteAppUl
                     NoteTextBox.Text = "";
                 }
             }
-            }
+        }
 
         public NoteForm()
         {
@@ -54,22 +54,10 @@ namespace NoteAppUl
             dateTimePicker1.Enabled = false;
             // Отключает возможность выбора даты, только просмотр.
             dateTimePicker2.Enabled = false;
-            CategoryComboBox.Items.Add(CategoryNote.All);
-            CategoryComboBox.Items.Add(CategoryNote.Work);
-            CategoryComboBox.Items.Add(CategoryNote.House);
-            CategoryComboBox.Items.Add(CategoryNote.Heath_and_sport);
-            CategoryComboBox.Items.Add(CategoryNote.People);
-            CategoryComboBox.Items.Add(CategoryNote.Documents);
-            CategoryComboBox.Items.Add(CategoryNote.Finance);
-            CategoryComboBox.Items.Add(CategoryNote.Another);
-        }
-
-        // Кнопка элемента управления Button.
-        private void Button2_Click(object sender, EventArgs e)
-        {
-            // При нажатии на кнопку окно NoteForm закрывается.
-            DialogResult = DialogResult.Cancel;
-            Close();
+            foreach (var category in Enum.GetValues(typeof(NoteCategory)))
+            {
+                CategoryComboBox.Items.Add(category);
+            }
         }
 
         // Кнопка элемента управления TextBox.
@@ -89,16 +77,17 @@ namespace NoteAppUl
         // Кнопка элемента управления Button.
         private void Button1_Click(object sender, EventArgs e)
         {
-            Cont = new Note();
-            Cont.Title = TitleTextBox.Text;
-            Cont.CreationTime = dateTimePicker1.Value;
-            Cont.LastChangeTime = DateTime.Now;
+            NoteRepository = new Note();
+            NoteRepository.Title = TitleTextBox.Text;
+            NoteRepository.CreationTime = dateTimePicker1.Value;
+            NoteRepository.LastChangeTime = DateTime.Now;
             string Text = NoteTextBox.Text;
+
             // Условие при котором если поля CategoryComboBox и NoteTextBox заполнены, то происходит сохранение полей и закрытие формы.
             if (CategoryComboBox.SelectedItem != null && Text.Length > 0)
             {
-                Cont.CategoryNote = (CategoryNote)CategoryComboBox.SelectedItem;
-                Cont.TextNote = NoteTextBox.Text;
+                NoteRepository.CategoryNote = (NoteCategory)CategoryComboBox.SelectedItem;
+                NoteRepository.TextNote = NoteTextBox.Text;
                 DialogResult = DialogResult.OK;
                 Close();
             }
@@ -118,7 +107,6 @@ namespace NoteAppUl
                 MessageBox.Show("Введите текст заметки", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 NoteTextBox.BackColor = Color.LightSalmon;
             }
-
         }
 
         // Кнопка элемента управления Button.
@@ -128,7 +116,5 @@ namespace NoteAppUl
             DialogResult = DialogResult.Cancel;
             Close();
         }
-
     }
-
 }

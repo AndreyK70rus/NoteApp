@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
@@ -17,9 +18,9 @@ namespace NoteApp
     public static class ProjectManager 
     {
 
-        private const string _FileSave = @"C:\Users\Андрей Калинин\Documents\NoteApp.notes";
+       public static string FilePath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/NoteApp.notes";
 
-        public static void Save(Project SaveNote) // Cериализация.
+        public static void Save(Project project) // Cериализация.
         {
             // Создаем экземпляр сериализатора.
             JsonSerializer serializer = new JsonSerializer()
@@ -29,15 +30,15 @@ namespace NoteApp
                 NullValueHandling = NullValueHandling.Include
             };
             // Создаем поток для записи в файл с указанием пути.
-            using (StreamWriter sw = new StreamWriter(_FileSave))
+            using (StreamWriter sw = new StreamWriter(FilePath))
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 // Вызываем сериализацию и передаем объект, который хотим сериализовать.
-                serializer.Serialize(writer, SaveNote);
+                serializer.Serialize(writer, project);
             }
         }
 
-        public static Project Download() // Десериализация.
+        public static Project Load() // Десериализация.
         {
             // Создаём переменную, в которую поместим результат десериализации.
             Project LoadNote = null;
@@ -51,7 +52,7 @@ namespace NoteApp
             try
             {
                 // Открываем поток для чтения из файла с указанием пути.
-                using (StreamReader sr = new StreamReader(_FileSave))
+                using (StreamReader sr = new StreamReader(FilePath))
                 using (JsonReader reader = new JsonTextReader(sr))
                 {
                     // Вызываем десериализацию и явно преобразуем результат в целевой тип данных.
