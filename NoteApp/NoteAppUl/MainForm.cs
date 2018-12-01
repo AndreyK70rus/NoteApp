@@ -21,7 +21,7 @@ namespace NoteAppUl
         {
             InitializeComponent();
             // Создаем экземпяр класса ProjectManager.
-            Project = ProjectManager.Load();
+            Project = ProjectManager.Load(ProjectManager.FilePath);
             // Выгружаем все заметки из массива и добавляем в листбокс название.
             foreach (var note in Project.NotesCollection)
             {
@@ -128,7 +128,7 @@ namespace NoteAppUl
                 {
                     NoteListBox.Items.Add(note.Title);
                 }
-                ProjectManager.Save(Project);
+                ProjectManager.Save(Project, ProjectManager.FilePath);
             }
         }
 
@@ -154,7 +154,7 @@ namespace NoteAppUl
                     {
                         NoteListBox.Items.Add(note.Title);
                     }
-                    ProjectManager.Save(Project);
+                    ProjectManager.Save(Project, ProjectManager.FilePath);
                     // Присваиваем в элементы управления правой части формы, значения редактированной заметки, для отображения.
                     textBox1.Text = upNote.Title;
                     CategoryTextBox.Text = upNote.CategoryNote.ToString();
@@ -180,7 +180,7 @@ namespace NoteAppUl
                     var selectedIndex = NoteListBox.SelectedIndex;
                     Project.NotesCollection.RemoveAt(selectedIndex);
                     // После удаления заметки, сразу производим сериализацию.
-                    ProjectManager.Save(Project);
+                    ProjectManager.Save(Project, ProjectManager.FilePath);
                     NoteListBox.Items.Clear();
                     foreach (var note in Project.NotesCollection)
                     {

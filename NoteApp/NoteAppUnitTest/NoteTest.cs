@@ -65,7 +65,7 @@ namespace NoteApp.UnitTexts
         [Test(Description = "Ввод некорректной даты в сеттер CreationTime")]
         public void TestCreationTimeSet_ArgumentExeption()
         {
-            var expected = new DateTime(2020,03,05);     
+            var expected = new DateTime(2020, 03, 05);
 
             Assert.Throws<ArgumentException>(() => { _note.CreationTime = expected; });
         }
@@ -73,7 +73,7 @@ namespace NoteApp.UnitTexts
         [Test(Description = "Позитивный тест для геттера CreationTime")]
         public void TestCreationTimeGet_CorrectValue()
         {
-            var expected = new DateTime(2018,11,28);
+            var expected = new DateTime(2018, 11, 28);
             _note.CreationTime = expected;
             var actual = _note.CreationTime;
 
@@ -87,12 +87,12 @@ namespace NoteApp.UnitTexts
 
             Assert.Throws<ArgumentException>(() => { _note.LastChangeTime = exeption; });
         }
-        [Ignore(reason:"По каким то причинам тест не работает")]
+        [Ignore(reason: "По каким то причинам тест не работает")]
         [Test(Description = "Ввод некорректной даты в сеттер LastChangeTime - больше даты создания")]
         public void TestLastChangeTime2Set_ArgumentExeption()
         {
             _note.CreationTime = new DateTime(2015, 9, 9);
-            var wrongLastChangeTime = new DateTime(2017,9,9);
+            var wrongLastChangeTime = new DateTime(2017, 9, 9);
 
             Assert.Throws<ArgumentException>(() => { _note.LastChangeTime = wrongLastChangeTime; });
         }

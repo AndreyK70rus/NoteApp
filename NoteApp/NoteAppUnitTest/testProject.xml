@@ -1,0 +1,32 @@
+{
+  "$type": "NoteApp.Project, NoteApp",
+  "NotesCollection": {
+    "$type": "System.Collections.Generic.List`1[[NoteApp.Note, NoteApp]], mscorlib",
+    "$values": [
+      {
+        "$type": "NoteApp.Note, NoteApp",
+        "Title": "Название первой заметки",
+        "CategoryNote": 1,
+        "TextNote": "Текст заметки",
+        "CreationTime": "2016-07-25T00:00:00",
+        "LastChangeTime": "2017-07-25T00:00:00"
+      },
+      {
+        "$type": "NoteApp.Note, NoteApp",
+        "Title": "Название второй заметки",
+        "CategoryNote": 4,
+        "TextNote": "Текст заметки",
+        "CreationTime": "2014-07-25T00:00:00",
+        "LastChangeTime": "2018-07-25T00:00:00"
+      },
+      {
+        "$type": "NoteApp.Note, NoteApp",
+        "Title": "Название третьей заметки",
+        "CategoryNote": 7,
+        "TextNote": "Текст заметки",
+        "CreationTime": "2015-07-25T00:00:00",
+        "LastChangeTime": "2017-05-25T00:00:00"
+      }
+    ]
+  }
+}

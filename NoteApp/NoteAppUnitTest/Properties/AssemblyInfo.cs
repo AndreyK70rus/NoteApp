@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("NoteApp.UnitTexts")]
+[assembly: AssemblyTitle("NoteAppUnitTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("NoteApp.UnitTexts")]
+[assembly: AssemblyProduct("NoteAppUnitTest")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("591f68e9-7934-4139-a558-6c1d0fb01d68")]
+[assembly: Guid("bebcc09d-c30d-44e8-95fa-178f164ea279")]
 
 // Сведения о версии сборки состоят из следующих четырех значений:
 //
