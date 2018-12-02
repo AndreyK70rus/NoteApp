@@ -18,7 +18,6 @@ namespace NoteApp.UnitTexts
             Note note2 = new Note();
             Note note3 = new Note();
             Project project = new Project();
-            
 
             string filePath = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile) +
             "/source/repos/NoteApp/NoteApp/NoteAppUnitTest/testProject.xml";
@@ -45,7 +44,6 @@ namespace NoteApp.UnitTexts
             project.NotesCollection.Add(note3);
 
             ProjectManager.Save(project, filePath);
-
         }
     }
 }

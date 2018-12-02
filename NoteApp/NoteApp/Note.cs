@@ -110,7 +110,7 @@ namespace NoteApp
             {
                 var date1 = DateTime.Now;
                 var date2 = CreationTime;
-                if (value > date1 && value > date2)
+                if (value > date1 || value > date2)
                 {
                     throw new ArgumentException("Дата изменения не может превышать текущую дату и время создания");
                 }

@@ -11,7 +11,6 @@ namespace NoteApp.UnitTexts
     [TestFixture]
     public class NoteTest
     {
-
         private Note _note;
 
         [SetUp]
@@ -33,7 +32,6 @@ namespace NoteApp.UnitTexts
             var expected = "Новый смартфон Oneplus 7";
             _note.Title = expected;
             var actual = _note.Title;
-
             Assert.AreEqual(expected, actual, "Геттер возвращает неправильное название");
         }
 
@@ -50,7 +48,6 @@ namespace NoteApp.UnitTexts
             var expected = "Тест для проверки. Пишу различные символы 4235а57/*213/ъ/";
             _note.TextNote = expected;
             var actual = _note.TextNote;
-
             Assert.AreEqual(expected, actual, "Метод геттер возвращает неправильное значение");
         }
 
@@ -66,8 +63,14 @@ namespace NoteApp.UnitTexts
         public void TestCreationTimeSet_ArgumentExeption()
         {
             var expected = new DateTime(2020, 03, 05);
-
             Assert.Throws<ArgumentException>(() => { _note.CreationTime = expected; });
+        }
+
+        [Test(Description = "Ввод корректной даты в сеттер CreationTime")]
+        public void TestCreationTimeSet_correctValue()
+        {
+            var expected = new DateTime(2015, 03, 05);
+            _note.CreationTime = expected;       
         }
 
         [Test(Description = "Позитивный тест для геттера CreationTime")]
@@ -76,24 +79,28 @@ namespace NoteApp.UnitTexts
             var expected = new DateTime(2018, 11, 28);
             _note.CreationTime = expected;
             var actual = _note.CreationTime;
-
             Assert.AreEqual(expected, actual, "Метод геттер возвращает неправильное значение");
         }
 
-        [Test(Description = "Ввод некорректной даты в сеттер LastChangeTime - меньше сегодня")]
+        [Test(Description = "Ввод корректной даты в сеттер LastChangeTime")]
+        public void TestLastChangeTimeSet_correctValue()
+        {
+            var expected = new DateTime(2016, 10, 10);
+            _note.LastChangeTime = expected;
+        }
+
+        [Test(Description = "Ввод некорректной даты в сеттер LastChangeTime - меньше текущей даты")]
         public void TestLastChangeTimeSet_ArgumentExeption()
         {
-            var exeption = new DateTime(2019, 10, 10);
-
-            Assert.Throws<ArgumentException>(() => { _note.LastChangeTime = exeption; });
+            var expected = new DateTime(2019, 10, 10);
+            Assert.Throws<ArgumentException>(() => { _note.LastChangeTime = expected; });
         }
-        [Ignore(reason: "По каким то причинам тест не работает")]
+
         [Test(Description = "Ввод некорректной даты в сеттер LastChangeTime - больше даты создания")]
         public void TestLastChangeTime2Set_ArgumentExeption()
         {
-            _note.CreationTime = new DateTime(2015, 9, 9);
+            _note.CreationTime = new DateTime(2015, 10, 9);
             var wrongLastChangeTime = new DateTime(2017, 9, 9);
-
             Assert.Throws<ArgumentException>(() => { _note.LastChangeTime = wrongLastChangeTime; });
         }
 
@@ -103,7 +110,6 @@ namespace NoteApp.UnitTexts
             var expected = new DateTime(2018, 11, 28);
             _note.LastChangeTime = expected;
             var actual = _note.LastChangeTime;
-
             Assert.AreEqual(expected, actual, "Метод геттер возвращает неправильное значение");
         }
     }

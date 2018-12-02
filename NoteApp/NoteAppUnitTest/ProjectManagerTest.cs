@@ -64,7 +64,6 @@ namespace NoteAppUnitTest
             Assert.AreEqual(expectedProject.NotesCollection[2].TextNote, actualProject.NotesCollection[2].TextNote);
             Assert.AreEqual(expectedProject.NotesCollection[2].CreationTime, actualProject.NotesCollection[2].CreationTime);
             Assert.AreEqual(expectedProject.NotesCollection[2].LastChangeTime, actualProject.NotesCollection[2].LastChangeTime);
-
         }
 
         [Test(Description = "Тест для проверки сериализации")]
