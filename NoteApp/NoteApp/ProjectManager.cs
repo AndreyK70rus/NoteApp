@@ -38,10 +38,10 @@ namespace NoteApp
             }
         }
 
-        public static Project Load(string filePath) // Десериализация.
+        public static Project Load(Project LoadNote, string filePath) // Десериализация.
         {
             // Создаём переменную, в которую поместим результат десериализации.
-            Project LoadNote = null;
+            LoadNote = null;
             // Создаем экхемпляр сериализатора.
             JsonSerializer serializer = new JsonSerializer()
             {

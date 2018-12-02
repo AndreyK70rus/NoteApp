@@ -21,7 +21,7 @@ namespace NoteAppUl
         {
             InitializeComponent();
             // Создаем экземпяр класса ProjectManager.
-            Project = ProjectManager.Load(ProjectManager.FilePath);
+            Project = ProjectManager.Load(Project,ProjectManager.FilePath);
             // Выгружаем все заметки из массива и добавляем в листбокс название.
             foreach (var note in Project.NotesCollection)
             {
