@@ -11,8 +11,8 @@ namespace NoteApp.UnitTexts
     [TestFixture]
     public class ProjectTest
     {
-         [Test(Description = "Тест для добавления земеток в массив заметок Project")]
-         public void ProjectTest_addNote()
+         [Test(Description = "Тест для добавления земеток в лист Project")]
+         public void ProjectTest_AddNotes()
          {
             Note note1 = new Note();
             Note note2 = new Note();

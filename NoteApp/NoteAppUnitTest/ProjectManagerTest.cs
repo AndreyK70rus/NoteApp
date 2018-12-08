@@ -47,6 +47,7 @@ namespace NoteAppUnitTest
             actualProject = ProjectManager.Load(actualProject, filePath);
 
             Assert.AreEqual(expectedProject.NotesCollection.Count, actualProject.NotesCollection.Count);
+
             Assert.AreEqual(expectedProject.NotesCollection[0].Title, actualProject.NotesCollection[0].Title);
             Assert.AreEqual(expectedProject.NotesCollection[0].CategoryNote, actualProject.NotesCollection[0].CategoryNote);
             Assert.AreEqual(expectedProject.NotesCollection[0].TextNote, actualProject.NotesCollection[0].TextNote);
@@ -66,7 +67,7 @@ namespace NoteAppUnitTest
             Assert.AreEqual(expectedProject.NotesCollection[2].LastChangeTime, actualProject.NotesCollection[2].LastChangeTime);
         }
 
-        [Test(Description = "Тест для проверки сериализации")]
+        [TestCase(TestName = "Тест для проверки сериализации")]
         public void SerializerTest()
         {
             Note note1 = new Note();
@@ -103,6 +104,7 @@ namespace NoteAppUnitTest
             actualProject = ProjectManager.Load(actualProject, filePath);
 
             Assert.AreEqual(expectedProject.NotesCollection.Count, actualProject.NotesCollection.Count);
+
             Assert.AreEqual(expectedProject.NotesCollection[0].Title, actualProject.NotesCollection[0].Title);
             Assert.AreEqual(expectedProject.NotesCollection[0].CategoryNote, actualProject.NotesCollection[0].CategoryNote);
             Assert.AreEqual(expectedProject.NotesCollection[0].TextNote, actualProject.NotesCollection[0].TextNote);

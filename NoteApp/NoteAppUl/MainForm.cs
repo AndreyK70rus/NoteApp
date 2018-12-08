@@ -20,11 +20,13 @@ namespace NoteAppUl
         public MainForm()
         {
             InitializeComponent();
+            NoteListBox.KeyDown += new KeyEventHandler(NoteListBox_Keys);
             // Создаем экземпяр класса ProjectManager.
             Project = ProjectManager.Load(Project,ProjectManager.FilePath);
+            Project.NotesCollection = Project.SortedNotesCollection();
             // Выгружаем все заметки из массива и добавляем в листбокс название.
             foreach (var note in Project.NotesCollection)
-            {
+            {               
                 NoteListBox.Items.Add(note.Title);
             }
             // Добавляем в элемент управления ComboBox перечисление. Категория заметки - Все.
@@ -36,19 +38,31 @@ namespace NoteAppUl
 
         // Кнопка элемента управления ListBox.
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        {           
             if (NoteListBox.SelectedIndex == -1)
             {
                 return;
             }
-
             // При выборе заметки из листбокса всем полям правой панели присваиваются значения выбранной заметки.
             textBox1.Text = Project.NotesCollection[NoteListBox.SelectedIndex].Title;
             CategoryTextBox.Text = Project.NotesCollection[NoteListBox.SelectedIndex].CategoryNote.ToString();
             CreatedDateTimePicker.Value = Project.NotesCollection[NoteListBox.SelectedIndex].CreationTime;
             ModifiedDateTimePicker.Value = Project.NotesCollection[NoteListBox.SelectedIndex].LastChangeTime;
             RichTextBox.Text = Project.NotesCollection[NoteListBox.SelectedIndex].TextNote;
-            
+        }
+
+        /// <summary>
+        /// Метод удаления выбранной заметки, при нажатии клавиши Delete.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NoteListBox_Keys(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {                    
+                DeleteNote();
+                e.Handled = true;
+            }
         }
 
         // Кнопка элемента управления Button в виде иконки добавления новой заметки.
@@ -119,14 +133,13 @@ namespace NoteAppUl
             var result = addater.ShowDialog();
             if (result == DialogResult.OK)
             {
-
-
                 var upNote = addater.Note;
                 NoteListBox.Items.Clear();
                 Project.NotesCollection.Add(upNote);
+                Project.NotesCollection = Project.SortedNotesCollection();
                 foreach (var note in Project.NotesCollection)
                 {
-                    NoteListBox.Items.Add(note.Title);
+                   NoteListBox.Items.Add(note.Title);
                 }
                 ProjectManager.Save(Project, ProjectManager.FilePath);
             }
@@ -150,6 +163,7 @@ namespace NoteAppUl
                     NoteListBox.Items.Clear();
                     Project.NotesCollection.RemoveAt(sIndex);
                     Project.NotesCollection.Add(upNote);
+                    Project.NotesCollection = Project.SortedNotesCollection();
                     foreach (var note in Project.NotesCollection)
                     {
                         NoteListBox.Items.Add(note.Title);
@@ -196,6 +210,29 @@ namespace NoteAppUl
                     RichTextBox.Text = "";
                 }
             }         
+        }
+
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            NoteListBox.Items.Clear();
+            Project project = ProjectManager.Load(Project, ProjectManager.FilePath);
+            Project.NotesCollection = project.NotesCollection;
+            var Category = CategoryComboBox.SelectedItem;
+            var sortedList = Project.SortedNotesCollection((NoteCategory)Category);
+            Project.NotesCollection = sortedList;
+            foreach (var category in sortedList)
+            {
+                NoteListBox.Items.Add(category.Title);
+            }
+            if (CategoryComboBox.SelectedIndex == 0)
+            {
+                Project.NotesCollection = project.NotesCollection;
+                NoteListBox.Items.Clear();
+                foreach (var all in Project.NotesCollection)
+                {
+                    NoteListBox.Items.Add(all.Title);
+                }
+            }
         }
     }
 }
