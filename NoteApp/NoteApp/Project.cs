@@ -46,5 +46,16 @@ namespace NoteApp
             }   
             return sorted.OrderByDescending(z => z.LastChangeTime).ToList();
         }
+
+        private int _currentNote;
+        public int CurrentNote
+        {
+            get { return _currentNote; }
+            set
+            {
+                _currentNote = value;
+            }
+        }
+
     }
 }

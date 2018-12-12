@@ -16,6 +16,7 @@ namespace NoteAppUl
     {
         // Создаем экземпяр класса Project.
         Project Project = new Project();
+        Project ProjectCurrentNote = new Project();
 
         public MainForm()
         {
@@ -34,11 +35,16 @@ namespace NoteAppUl
             {
                 CategoryComboBox.Items.Add(category);
             }
+            ProjectCurrentNote = ProjectManager.Load(Project, ProjectManager.FilePath);
+            NoteListBox.SelectedIndex = ProjectCurrentNote.CurrentNote;
         }
 
         // Кнопка элемента управления ListBox.
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {           
+        {
+            ProjectCurrentNote.CurrentNote = NoteListBox.SelectedIndex;
+            ProjectManager.Save(ProjectCurrentNote, ProjectManager.FilePath);
+            
             if (NoteListBox.SelectedIndex == -1)
             {
                 return;

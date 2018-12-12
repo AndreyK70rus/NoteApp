@@ -11,7 +11,7 @@ namespace NoteAppUnitTest
     [TestFixture]
     class ProjectManagerTest
     {
-        [Test(Description = "Тест для проверки десериализации")]
+        [TestCase(TestName = "Тест для проверки десериализации")]
         public void DeserializerTest()
         {
             Note note1 = new Note();

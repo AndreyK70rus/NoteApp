@@ -19,14 +19,14 @@ namespace NoteApp.UnitTexts
             _note = new Note();
         }
 
-        [Test(Description = "Присвоение названия заметки больше 50 сиволов")]
+        [TestCase(TestName = "Присвоение названия заметки больше 50 сиволов")]
         public void TestTitleSet_Longer50Symbols()
         {
             var wrongTitle = "Самое длинное название, которое возможно было бы придумать. Проверка для теста.";
             Assert.Throws<ArgumentException>(() => { _note.Title = wrongTitle; });
         }
 
-        [Test(Description = "Позитивный тест для геттера Title")]
+        [TestCase(TestName = "Позитивный тест для геттера Title")]
         public void TestTitleGet_CorrectValue()
         {
             var expected = "Новый смартфон Oneplus 7";
@@ -35,14 +35,14 @@ namespace NoteApp.UnitTexts
             Assert.AreEqual(expected, actual, "Геттер возвращает неправильное название");
         }
 
-        [Test(Description = "Позитивный тест для сеттера Title")]
+        [TestCase(TestName = "Позитивный тест для сеттера Title")]
         public void TestTitleSet_СorrectValue()
         {
             var expected = "Умный дом";
             _note.Title = expected;
         }
 
-        [Test(Description = "Позитивный тест для геттера TextNote")]
+        [TestCase(TestName = "Позитивный тест для геттера TextNote")]
         public void TestTextNoteGet_CorrectValue()
         {
             var expected = "Тест для проверки. Пишу различные символы 4235а57/*213/ъ/";
@@ -51,7 +51,7 @@ namespace NoteApp.UnitTexts
             Assert.AreEqual(expected, actual, "Геттер возвращает неправильное значение");
         }
 
-        [Test(Description = "Позитивный тест для сеттера TextNote")]
+        [TestCase(TestName = "Позитивный тест для сеттера TextNote")]
         public void TextTextNoteSet_CorrectValue()
         {
             var expected = "Необходимо проверить на содержание различных символов и большого размера." +
@@ -59,21 +59,21 @@ namespace NoteApp.UnitTexts
             _note.TextNote = expected;
         }
 
-        [Test(Description = "Ввод некорректной даты в сеттер CreationTime")]
+        [TestCase(TestName = "Ввод некорректной даты в сеттер CreationTime")]
         public void TestCreationTimeSet_ArgumentExeption()
         {
             var expected = new DateTime(2020, 03, 05);
             Assert.Throws<ArgumentException>(() => { _note.CreationTime = expected; });
         }
 
-        [Test(Description = "Ввод корректной даты в сеттер CreationTime")]
+        [TestCase(TestName = "Ввод корректной даты в сеттер CreationTime")]
         public void TestCreationTimeSet_СorrectValue()
         {
             var expected = new DateTime(2015, 03, 05);
             _note.CreationTime = expected;       
         }
 
-        [Test(Description = "Позитивный тест для геттера CreationTime")]
+        [TestCase(TestName = "Позитивный тест для геттера CreationTime")]
         public void TestCreationTimeGet_CorrectValue()
         {
             var expected = new DateTime(2018, 11, 28);
@@ -82,7 +82,7 @@ namespace NoteApp.UnitTexts
             Assert.AreEqual(expected, actual,"Геттер возвращает неправильное значение");
         }
 
-        [Test(Description = "Ввод корректной даты в сеттер LastChangeTime")]
+        [TestCase(TestName = "Ввод корректной даты в сеттер LastChangeTime")]
         public void TestLastChangeTimeSet_correctValue()
         {
             _note.CreationTime = new DateTime(2015,01,01);
@@ -90,14 +90,14 @@ namespace NoteApp.UnitTexts
             _note.LastChangeTime = expected;
         }
 
-        [Test(Description = "Ввод некорректной даты в сеттер LastChangeTime - меньше текущей даты")]
+        [TestCase(TestName = "Ввод некорректной даты в сеттер LastChangeTime - меньше текущей даты")]
         public void TestLastChangeTimeSet_ArgumentExeption()
         {
             var expected = new DateTime(2019, 10, 10);
             Assert.Throws<ArgumentException>(() => { _note.LastChangeTime = expected; });
         }
 
-        [Test(Description = "Ввод некорректной даты в сеттер LastChangeTime - меньше даты создания")]
+        [TestCase(TestName = "Ввод некорректной даты в сеттер LastChangeTime - меньше даты создания")]
         public void TestLastChangeTime2Set_ArgumentExeption()
         {
             _note.CreationTime = new DateTime(2018, 10, 9);
@@ -105,7 +105,7 @@ namespace NoteApp.UnitTexts
             Assert.Throws<ArgumentException>(() => { _note.LastChangeTime = wrongLastChangeTime; });
         }
 
-        [Test(Description = "Позитивный тест для геттера lastChangeTime")]
+        [TestCase(TestName = "Позитивный тест для геттера lastChangeTime")]
         public void TestLastChangeTimeGet_CorrectValue()
         {
             _note.CreationTime = new DateTime(2010,01,01);

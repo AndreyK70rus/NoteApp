@@ -11,7 +11,7 @@ namespace NoteApp.UnitTexts
     [TestFixture]
     public class ProjectTest
     {
-         [Test(Description = "Тест для добавления земеток в лист Project")]
+         [TestCase(TestName = "Подготовка для теста сериализации и десериализации")]
          public void ProjectTest_AddNotes()
          {
             Note note1 = new Note();
@@ -44,6 +44,15 @@ namespace NoteApp.UnitTexts
             project.NotesCollection.Add(note3);
 
             ProjectManager.Save(project, filePath);
+         }
+
+        [Ignore("Тест на проверку наличия листа")]
+        [TestCase(TestName = "Проверка на наличие листа в Project")]
+        public void TestList()
+        {
+            Project project = new Project();
+            var expected = project.NotesCollection;
+            Assert.True(Convert.ToBoolean(expected));
         }
     }
 }
