@@ -35,16 +35,24 @@ namespace NoteAppUl
             {
                 CategoryComboBox.Items.Add(category);
             }
-            ProjectCurrentNote = ProjectManager.Load(Project, ProjectManager.FilePath);
-            NoteListBox.SelectedIndex = ProjectCurrentNote.CurrentNote;
+            ProjectCurrentNote = ProjectManager.Load(ProjectCurrentNote, ProjectManager.FilePath);
+            NoteListBox.SelectedItem = ProjectCurrentNote.CurrentNote.Title;
+
         }
 
         // Кнопка элемента управления ListBox.
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ProjectCurrentNote.CurrentNote = NoteListBox.SelectedIndex;
-            ProjectManager.Save(ProjectCurrentNote, ProjectManager.FilePath);
-            
+            if (NoteListBox.Items.Count < 0 || ProjectCurrentNote.CurrentNote == null)
+            {
+                return;
+            }
+            else
+            {
+                ProjectCurrentNote.CurrentNote = Project.NotesCollection[NoteListBox.SelectedIndex];             
+                ProjectManager.Save(ProjectCurrentNote, ProjectManager.FilePath);
+            }
+
             if (NoteListBox.SelectedIndex == -1)
             {
                 return;
