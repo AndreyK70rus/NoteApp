@@ -21,12 +21,14 @@ namespace NoteAppUl
         public MainForm()
         {
             InitializeComponent();
+            // Кнопка для удаления заметки по нажатию клавиши Delete.
             NoteListBox.KeyDown += new KeyEventHandler(NoteListBox_Keys);
             // Создаем экземпяр класса ProjectManager.
             Project = ProjectManager.Load(Project,ProjectManager.FilePath);
             Project.NotesCollection = Project.SortedNotesCollection();
+            ListViewNote = Project.NotesCollection;
             // Выгружаем все заметки из массива и добавляем в листбокс название.
-            foreach (var note in Project.NotesCollection)
+            foreach (var note in ListViewNote)
             {               
                 NoteListBox.Items.Add(note.Title);
             }
@@ -37,103 +39,41 @@ namespace NoteAppUl
             }
             ProjectCurrentNote = ProjectManager.Load(ProjectCurrentNote, ProjectManager.FilePath);
             NoteListBox.SelectedItem = ProjectCurrentNote.CurrentNote.Title;
-
+            textBox1.Text = ProjectCurrentNote.CurrentNote.Title;
+            CategoryTextBox.Text = ProjectCurrentNote.CurrentNote.CategoryNote.ToString();
+            CreatedDateTimePicker.Value = ProjectCurrentNote.CurrentNote.CreationTime;
+            ModifiedDateTimePicker.Value = ProjectCurrentNote.CurrentNote.LastChangeTime;
+            RichTextBox.Text = ProjectCurrentNote.CurrentNote.TextNote;
         }
 
+        /// <summary>
+        /// Поле для хранения отсортированного списка по категориям, внутри программы.
+        /// </summary>
+        private List<Note> ListViewNote;
+        
         // Кнопка элемента управления ListBox.
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (NoteListBox.Items.Count < 0 || ProjectCurrentNote.CurrentNote == null)
+            if (NoteListBox.SelectedIndex == -1)
             {
                 return;
             }
             else
             {
-                ProjectCurrentNote.CurrentNote = Project.NotesCollection[NoteListBox.SelectedIndex];             
+                ProjectCurrentNote.CurrentNote.Title = Project.NotesCollection[NoteListBox.SelectedIndex].Title;
+                ProjectCurrentNote.CurrentNote.CategoryNote = Project.NotesCollection[NoteListBox.SelectedIndex].CategoryNote;
+                ProjectCurrentNote.CurrentNote.TextNote = Project.NotesCollection[NoteListBox.SelectedIndex].TextNote;
+                ProjectCurrentNote.CurrentNote.CreationTime = Project.NotesCollection[NoteListBox.SelectedIndex].CreationTime;
+                ProjectCurrentNote.CurrentNote.LastChangeTime = Project.NotesCollection[NoteListBox.SelectedIndex].LastChangeTime;
                 ProjectManager.Save(ProjectCurrentNote, ProjectManager.FilePath);
+                ProjectManager.Save(Project, ProjectManager.FilePath);
+                // При выборе заметки из листбокса всем полям правой панели присваиваются значения выбранной заметки.
+                textBox1.Text = ListViewNote[NoteListBox.SelectedIndex].Title;
+                CategoryTextBox.Text = ListViewNote[NoteListBox.SelectedIndex].CategoryNote.ToString();
+                CreatedDateTimePicker.Value = ListViewNote[NoteListBox.SelectedIndex].CreationTime;
+                ModifiedDateTimePicker.Value = ListViewNote[NoteListBox.SelectedIndex].LastChangeTime;
+                RichTextBox.Text = ListViewNote[NoteListBox.SelectedIndex].TextNote;
             }
-
-            if (NoteListBox.SelectedIndex == -1)
-            {
-                return;
-            }
-            // При выборе заметки из листбокса всем полям правой панели присваиваются значения выбранной заметки.
-            textBox1.Text = Project.NotesCollection[NoteListBox.SelectedIndex].Title;
-            CategoryTextBox.Text = Project.NotesCollection[NoteListBox.SelectedIndex].CategoryNote.ToString();
-            CreatedDateTimePicker.Value = Project.NotesCollection[NoteListBox.SelectedIndex].CreationTime;
-            ModifiedDateTimePicker.Value = Project.NotesCollection[NoteListBox.SelectedIndex].LastChangeTime;
-            RichTextBox.Text = Project.NotesCollection[NoteListBox.SelectedIndex].TextNote;
-        }
-
-        /// <summary>
-        /// Метод удаления выбранной заметки, при нажатии клавиши Delete.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void NoteListBox_Keys(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete)
-            {                    
-                DeleteNote();
-                e.Handled = true;
-            }
-        }
-
-        // Кнопка элемента управления Button в виде иконки добавления новой заметки.
-        private void AddButton_Click(object sender, EventArgs e)
-        {
-            // При нажатии на кнопку запускается метод добавления заметки.
-            AddNote();
-        }
-
-        // Кнопка элемента управления Button в виде иконки редактирования заметки.
-        private void EditButton_Click(object sender, EventArgs e)
-        {
-            // При нажатии на кнопку запускается метод редактирования заметки.
-            EditNote();
-        }
-
-        // Кнопка элемента управления Button в виде иконки удаления заметки.
-        private void DeleteButton_Click(object sender, EventArgs e)
-        {
-            DeleteNote();
-        }
-
-        // Кнопка из элемента управления menuStrip1, File, Exit. 
-        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // При нажатии кнопки приложение полностью завершает свою работу.
-            Application.Exit();
-        }
-
-        // Кнопка из элемента управления menuStrip1, Edit, Add Note.
-        private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // При нажатии на кнопку запускается метод добавления заметки.
-            AddNote();
-        }
-
-        // Кнопка из элемента управления menuStrip1, Edit, Edit Note.
-        private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // При нажатии на кнопку запускается метод редактирования заметки.
-            EditNote();
-        }
-
-        // Кнопка из элемента управления menuStrip1, Edit, Remove Note.
-        private void RemoveNoteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // При нажатии на кнопку запускается метод удаления заметки.
-            DeleteNote();
-        }
-
-        // Кнопка из элемента управления menuStrip1, Help, About.
-        private void AboutToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            // Создаем экземпляр формы AboutForm.
-            AboutForm Form = new AboutForm();
-            // При нажатии на кнопку запускается форма AboutMe.
-            Form.ShowDialog(this);
         }
 
         /// <summary>
@@ -150,6 +90,7 @@ namespace NoteAppUl
                 var upNote = addater.Note;
                 NoteListBox.Items.Clear();
                 Project.NotesCollection.Add(upNote);
+                ListViewNote = Project.SortedNotesCollection();
                 Project.NotesCollection = Project.SortedNotesCollection();
                 foreach (var note in Project.NotesCollection)
                 {
@@ -166,17 +107,17 @@ namespace NoteAppUl
         {
             if (NoteListBox.SelectedIndex != -1)
             {
-
                 var sIndex = NoteListBox.SelectedIndex;
                 var inner = new NoteForm();
                 inner.Note = Project.NotesCollection[sIndex];
                 var result = inner.ShowDialog(this);
                 if (result == DialogResult.OK)
-                {
+                {               
                     var upNote = inner.Note;
                     NoteListBox.Items.Clear();
                     Project.NotesCollection.RemoveAt(sIndex);
                     Project.NotesCollection.Add(upNote);
+                    ListViewNote = Project.SortedNotesCollection();
                     Project.NotesCollection = Project.SortedNotesCollection();
                     foreach (var note in Project.NotesCollection)
                     {
@@ -226,27 +167,100 @@ namespace NoteAppUl
             }         
         }
 
+        /// <summary>
+        /// Метод для сортировки заметок по категориям.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            NoteListBox.Items.Clear();
-            Project project = ProjectManager.Load(Project, ProjectManager.FilePath);
-            Project.NotesCollection = project.NotesCollection;
             var Category = CategoryComboBox.SelectedItem;
-            var sortedList = Project.SortedNotesCollection((NoteCategory)Category);
-            Project.NotesCollection = sortedList;
-            foreach (var category in sortedList)
+            ListViewNote = Project.SortedNotesCollection((NoteCategory)Category);
+            NoteListBox.Items.Clear();
+            foreach (var category in ListViewNote)
             {
                 NoteListBox.Items.Add(category.Title);
             }
             if (CategoryComboBox.SelectedIndex == 0)
             {
-                Project.NotesCollection = project.NotesCollection;
+                ListViewNote = Project.NotesCollection;
                 NoteListBox.Items.Clear();
-                foreach (var all in Project.NotesCollection)
+                foreach (var category in ListViewNote)
                 {
-                    NoteListBox.Items.Add(all.Title);
+                    NoteListBox.Items.Add(category.Title);
                 }
             }
         }
+            /// <summary>
+            /// Метод удаления выбранной заметки, при нажатии клавиши Delete.
+            /// </summary>
+            /// <param name="sender"></param>
+            /// <param name="e"></param>
+            private void NoteListBox_Keys(object sender, KeyEventArgs e)
+            {
+                if (e.KeyCode == Keys.Delete)
+                {
+                    DeleteNote();
+                    e.Handled = true;
+                }
+            }
+
+            // Кнопка элемента управления Button в виде иконки добавления новой заметки.
+            private void AddButton_Click(object sender, EventArgs e)
+            {
+                // При нажатии на кнопку запускается метод добавления заметки.
+                AddNote();
+            }
+
+            // Кнопка элемента управления Button в виде иконки редактирования заметки.
+            private void EditButton_Click(object sender, EventArgs e)
+            {
+                // При нажатии на кнопку запускается метод редактирования заметки.
+                EditNote();
+            }
+
+            // Кнопка элемента управления Button в виде иконки удаления заметки.
+            private void DeleteButton_Click(object sender, EventArgs e)
+            {
+                DeleteNote();
+            }
+
+            // Кнопка из элемента управления menuStrip1, File, Exit. 
+            private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                // При нажатии кнопки приложение полностью завершает свою работу.
+                Application.Exit();
+            }
+
+            // Кнопка из элемента управления menuStrip1, Edit, Add Note.
+            private void AddNoteToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                // При нажатии на кнопку запускается метод добавления заметки.
+                AddNote();
+            }
+
+            // Кнопка из элемента управления menuStrip1, Edit, Edit Note.
+            private void EditNoteToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                // При нажатии на кнопку запускается метод редактирования заметки.
+                EditNote();
+            }
+
+            // Кнопка из элемента управления menuStrip1, Edit, Remove Note.
+            private void RemoveNoteToolStripMenuItem_Click(object sender, EventArgs e)
+            {
+                // При нажатии на кнопку запускается метод удаления заметки.
+                DeleteNote();
+            }
+
+            // Кнопка из элемента управления menuStrip1, Help, About.
+            private void AboutToolStripMenuItem_Click_1(object sender, EventArgs e)
+            {
+                // Создаем экземпляр формы AboutForm.
+                AboutForm Form = new AboutForm();
+                // При нажатии на кнопку запускается форма AboutMe.
+                Form.ShowDialog(this);
+            }
+        
     }
 }
