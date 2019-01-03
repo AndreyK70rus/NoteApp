@@ -47,8 +47,8 @@ namespace NoteApp
             return sorted.OrderByDescending(z => z.LastChangeTime).ToList();
         }
 
-        private Note _currentNote;
-        public Note CurrentNote
+        private int _currentNote;
+        public int CurrentNote
         {
             get { return _currentNote; }
             set

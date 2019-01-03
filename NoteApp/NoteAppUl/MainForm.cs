@@ -38,6 +38,7 @@ namespace NoteAppUl
             {
                 CategoryComboBox.Items.Add(category);
             }
+            NoteListBox.SelectedIndex = Project.CurrentNote;
         }
 
         /// <summary>
@@ -49,19 +50,30 @@ namespace NoteAppUl
         // Кнопка элемента управления ListBox.
         private void NoteListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var index = NoteListBox.SelectedIndex;
             if (NoteListBox.SelectedIndex == -1)
             {
                 return;
             }
-            else
+            if (NoteListBox.SelectedIndex >= 0)
             {
+                for (int i = 0; i < Project.NotesCollection.Count; i++)
+                    if (ListViewNote[index].Title == Project.NotesCollection[i].Title &&
+                    ListViewNote[index].CategoryNote == Project.NotesCollection[i].CategoryNote &&
+                    ListViewNote[index].TextNote == Project.NotesCollection[i].TextNote &&
+                    ListViewNote[index].CreationTime == Project.NotesCollection[i].CreationTime &&
+                    ListViewNote[index].LastChangeTime == Project.NotesCollection[i].LastChangeTime)
+                    {
+                        Project.CurrentNote = i;
+                        ProjectManager.Save(Project, ProjectManager.FilePath);
+                    }
                 // При выборе заметки из листбокса всем полям правой панели присваиваются значения выбранной заметки.
                 textBox1.Text = ListViewNote[NoteListBox.SelectedIndex].Title;
                 CategoryTextBox.Text = ListViewNote[NoteListBox.SelectedIndex].CategoryNote.ToString();
                 CreatedDateTimePicker.Value = ListViewNote[NoteListBox.SelectedIndex].CreationTime;
                 ModifiedDateTimePicker.Value = ListViewNote[NoteListBox.SelectedIndex].LastChangeTime;
                 RichTextBox.Text = ListViewNote[NoteListBox.SelectedIndex].TextNote;
-            }
+            }            
         }
 
         /// <summary>
