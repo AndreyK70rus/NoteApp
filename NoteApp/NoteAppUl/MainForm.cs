@@ -38,7 +38,14 @@ namespace NoteAppUl
             {
                 CategoryComboBox.Items.Add(category);
             }
-            NoteListBox.SelectedIndex = Project.CurrentNote;
+            if (NoteListBox.Items.Count < 1 )
+            {
+                NoteListBox.SelectedIndex = -1;
+            }
+            else
+            {
+                NoteListBox.SelectedIndex = Project.CurrentNote;
+            }
         }
 
         /// <summary>
